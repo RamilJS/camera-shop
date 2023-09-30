@@ -1,37 +1,40 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+
 function Header(): JSX.Element {
   return (
     <header className="header" id="header">
       <div className="container">
-        <a
+        <Link
           className="header__logo"
-          href="index.html"
+          to={AppRoute.Main}
           aria-label="Переход на главную"
         >
           <svg width={100} height={36} aria-hidden="true">
             <use xlinkHref="#icon-logo" />
           </svg>
-        </a>
+        </Link>
         <nav className="main-nav header__main-nav">
           <ul className="main-nav__list">
             <li className="main-nav__item">
-              <a className="main-nav__link" href="catalog.html">
+              <Link className="main-nav__link" to={AppRoute.Main}>
                 Каталог
-              </a>
+              </Link>
             </li>
             <li className="main-nav__item">
-              <a className="main-nav__link" href="#">
+              <Link className="main-nav__link" to="#">
                 Гарантии
-              </a>
+              </Link>
             </li>
             <li className="main-nav__item">
-              <a className="main-nav__link" href="#">
+              <Link className="main-nav__link" to="#">
                 Доставка
-              </a>
+              </Link>
             </li>
             <li className="main-nav__item">
-              <a className="main-nav__link" href="#">
+              <Link className="main-nav__link" to="#">
                 О компании
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -78,12 +81,12 @@ function Header(): JSX.Element {
             <span className="visually-hidden">Сбросить поиск</span>
           </button>
         </div>
-        <a className="header__basket-link" href="#">
+        <Link className="header__basket-link" to={AppRoute.Basket}>
           <svg width={16} height={16} aria-hidden="true">
             <use xlinkHref="#icon-basket" />
           </svg>
           <span className="header__basket-count">3</span>
-        </a>
+        </Link>
       </div>
     </header>
   );

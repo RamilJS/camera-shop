@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import { AppRoute } from '../../const';
 
 function Catalog(): JSX.Element {
   return (
@@ -28,9 +30,9 @@ function Catalog(): JSX.Element {
             <span className="banner__text">
               Профессиональная камера от&nbsp;известного производителя
             </span>
-            <a className="btn" href="#">
+            <Link className="btn" to={AppRoute.Product}>
               Подробнее
-            </a>
+            </Link>
           </p>
         </div>
         <div className="page-content">
@@ -38,12 +40,12 @@ function Catalog(): JSX.Element {
             <div className="container">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a className="breadcrumbs__link" href="index.html">
+                  <Link className="breadcrumbs__link" to={AppRoute.Main}>
                     Главная
                     <svg width={5} height={8} aria-hidden="true">
                       <use xlinkHref="#icon-arrow-mini" />
                     </svg>
-                  </a>
+                  </Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <span className="breadcrumbs__link breadcrumbs__link--active">
@@ -293,9 +295,9 @@ function Catalog(): JSX.Element {
                         >
                           Купить
                         </button>
-                        <a className="btn btn--transparent" href="#">
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-card">
@@ -342,18 +344,18 @@ function Catalog(): JSX.Element {
                         </p>
                       </div>
                       <div className="product-card__buttons">
-                        <a
+                        <Link
                           className="btn btn--purple-border product-card__btn product-card__btn--in-cart"
-                          href="#"
+                          to={AppRoute.Basket}
                         >
                           <svg width={16} height={16} aria-hidden="true">
                             <use xlinkHref="#icon-basket" />
                           </svg>
                           В корзине
-                        </a>
-                        <a className="btn btn--transparent" href="#">
+                        </Link>
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-card">
@@ -407,9 +409,9 @@ function Catalog(): JSX.Element {
                         >
                           Купить
                         </button>
-                        <a className="btn btn--transparent" href="#">
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-card">
@@ -462,9 +464,9 @@ function Catalog(): JSX.Element {
                         >
                           Купить
                         </button>
-                        <a className="btn btn--transparent" href="#">
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-card">
@@ -518,9 +520,9 @@ function Catalog(): JSX.Element {
                         >
                           Купить
                         </button>
-                        <a className="btn btn--transparent" href="#">
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-card">
@@ -575,9 +577,9 @@ function Catalog(): JSX.Element {
                         >
                           Купить
                         </button>
-                        <a className="btn btn--transparent" href="#">
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-card">
@@ -631,9 +633,9 @@ function Catalog(): JSX.Element {
                         >
                           Купить
                         </button>
-                        <a className="btn btn--transparent" href="#">
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-card">
@@ -688,9 +690,9 @@ function Catalog(): JSX.Element {
                         >
                           Купить
                         </button>
-                        <a className="btn btn--transparent" href="#">
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-card">
@@ -743,9 +745,9 @@ function Catalog(): JSX.Element {
                         >
                           Купить
                         </button>
-                        <a className="btn btn--transparent" href="#">
+                        <Link className="btn btn--transparent" to={AppRoute.Product}>
                           Подробнее
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
