@@ -3,6 +3,7 @@ export const enum AppRoute {
   Product = '/cameras/:id',
   Basket = '/basket',
   NotFound = '/not-found-screen',
+  ProductDescriptionTab = 'description',
 }
 
 export enum APIRoute {
@@ -17,6 +18,7 @@ export enum APIRoute {
 
 export enum NameSpace {
   CamerasData = 'CAMERAS_DATA',
+  PromoData = 'PROMO_DATA',
 }
 
 export enum Status {
