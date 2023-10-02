@@ -8,8 +8,12 @@ import CatalogSort from '../../components/catalog-sort/catalog-sort';
 import Pagination from '../../components/pagination/pagination';
 import CatalogCardList from '../../components/catalog-card-list/catalog-card-list';
 import { AppRoute } from '../../const';
+import { useAppSelector } from '../../hooks';
+import { getCameras } from '../../store/cameras-data/cameras-data.selectors';
 
 function Catalog(): JSX.Element {
+  const cameras = useAppSelector(getCameras);
+
   return (
     <>
       <Helmet>
@@ -48,7 +52,7 @@ function Catalog(): JSX.Element {
                   </div>
                   <div className="catalog__content">
                     <CatalogSort />
-                    <CatalogCardList />
+                    <CatalogCardList cameras={cameras} />
                     <Pagination />
                   </div>
                 </div>

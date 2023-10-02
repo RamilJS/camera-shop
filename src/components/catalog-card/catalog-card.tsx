@@ -1,21 +1,31 @@
 import { Link } from 'react-router-dom';
+import { Camera } from '../../types/camera';
 import { AppRoute } from '../../const';
 
-function CatalogCard(): JSX.Element {
+type CatalogCardProps = {
+  camera: Camera;
+  isActive: boolean;
+}
+
+function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
+  //const dispatch = useAppDispatch();
+
+  const productCardClassName = isActive ? 'product-card is-active' : 'product-card';
+
   return (
-    <div className="product-card">
+    <div className={productCardClassName}>
       <div className="product-card__img">
         <picture>
           <source
             type="image/webp"
-            srcSet="img/content/das-auge.webp, img/content/das-auge@2x.webp 2x"
+            srcSet={`${camera.previewImgWebp}, ${camera.previewImg2x} 2x`}
           />
           <img
-            src="img/content/das-auge.jpg"
-            srcSet="img/content/das-auge@2x.jpg 2x"
+            src={camera.previewImg}
+            srcSet={`${camera.previewImg2x} 2x`}
             width={280}
             height={240}
-            alt="Ретрокамера «Das Auge IV»"
+            alt={camera.name}
           />
         </picture>
       </div>
@@ -36,16 +46,17 @@ function CatalogCard(): JSX.Element {
           <svg width={17} height={16} aria-hidden="true">
             <use xlinkHref="#icon-star" />
           </svg>
-          <p className="visually-hidden">Рейтинг: 3</p>
+          <p className="visually-hidden">Рейтинг: {camera.rating}</p>
           <p className="rate__count">
-            <span className="visually-hidden">Всего оценок:</span>23
+            <span className="visually-hidden">Всего оценок:</span>
+            {camera.reviewCount}
           </p>
         </div>
         <p className="product-card__title">
-          Ретрокамера Das Auge IV
+          {camera.name}
         </p>
         <p className="product-card__price">
-          <span className="visually-hidden">Цена:</span>73 450 ₽
+          <span className="visually-hidden">Цена:</span>{camera.price} ₽
         </p>
       </div>
       <div className="product-card__buttons">
