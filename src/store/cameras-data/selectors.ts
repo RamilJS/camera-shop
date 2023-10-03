@@ -8,5 +8,5 @@ type Cameras = Camera[];
 export const getCameras = (state: State): Cameras => state[NameSpace.CamerasData].cameras.data;
 export const getStatus = (state: State): Status => state[NameSpace.CamerasData].cameras.status;
 
-export const getPromo = (state: State): Promo | null => state[NameSpace.CamerasData].promoCamera.data;
+export const getPromo = (state: State): Promo[] | null => state[NameSpace.CamerasData].promoCamera.data;
 export const getPromoStatus = (state: State): Status => state[NameSpace.CamerasData].promoCamera.status;

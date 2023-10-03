@@ -1,12 +1,18 @@
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-import { Status} from '../../const';
-import { Promo } from '../../types/promo';
 import { getPromoStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
+import { Promo } from '../../types/promo';
+import { AppRoute, Status} from '../../const';
 
 type PromoProps = {
-  promoCamera: Promo | null;
+  promoCamera: Promo[] | null;
 }
 
 function Banner({promoCamera}: PromoProps): JSX.Element {
@@ -17,38 +23,58 @@ function Banner({promoCamera}: PromoProps): JSX.Element {
     return <Loader />;
   }
 
+  const pagination = {
+    clickable: true,
+    renderBullet: function (_ : number, className : string) {
+      return `<span class="${ className }"></span>`;
+    },
+  };
+
   return (
-    <div className="banner">
-      <picture>
-        <source
-          type="image/webp"
-          srcSet={`${promoCamera.previewImgWebp}, ${promoCamera.previewImg2x} 2x`}
-        />
-        <img
-          src={promoCamera.previewImg}
-          srcSet={`${promoCamera.previewImg2x} 2x`}
-          width={1280}
-          height={280}
-          alt="баннер"
-        />
-      </picture>
-      <p className="banner__info">
-        <span className="banner__message">Новинка!</span>
-        <span className="title title--h1">
-          {promoCamera.name}
-        </span>
-        <span className="banner__text">
+    <Swiper
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      pagination = {pagination}
+      modules={[Autoplay, Pagination, Navigation]}
+      loop
+    >
+      {promoCamera.map((elem) => (
+        <SwiperSlide key={`${elem.id}banner`}>
+          <div
+
+            className="banner"
+          >
+            <picture>
+              <source
+                type="image/webp"
+                srcSet={`${elem.previewImgWebp} , ${elem.previewImgWebp2x} 2x`}
+              />
+              <img
+                src={elem.previewImg}
+                srcSet={`${elem.previewImg2x} 2x`}
+                width={1280}
+                height={280}
+                alt="баннер"
+              />
+            </picture>
+            <p className="banner__info">
+              <span className="banner__message"></span>
+              <span className="title title--h1">
+                {elem.name}
+              </span>
+              <span className="banner__text">
           Профессиональная камера от&nbsp;известного производителя
-        </span>
-        <Link
-          className="btn"
-          //to={generatePath(AppRoute.Product, {id: String(promoCamera.id), tab: AppRoute.ProductDescriptionTabx})}
-          to={'#'}
-        >
+              </span>
+              <Link className="btn" to={`${AppRoute.Main}${elem.id}`}>
           Подробнее
-        </Link>
-      </p>
-    </div>
+              </Link>
+            </p>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }
 

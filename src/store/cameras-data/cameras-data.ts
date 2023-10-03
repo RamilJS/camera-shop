@@ -18,7 +18,7 @@ export type CameraSlice = {
     isSimilarCamerasLoading: boolean;
   };
   promoCamera: {
-    data: Promo | null;
+    data: Promo[] | null;
     status: Status;
   };
 };
