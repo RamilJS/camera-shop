@@ -2,13 +2,14 @@ import { Link, generatePath } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import { getPromo, getPromoStatus } from '../../store/promo-data/promo-data.selectors';
 import Loader from '../loader/loader';
-import { AppRoute } from '../../const';
+import { AppRoute, Status } from '../../const';
 
 function Banner(): JSX.Element {
   const promoCamera = useAppSelector(getPromo);
+  //console.log(promoCamera);
   const isLoading = useAppSelector(getPromoStatus);
 
-  if (isLoading) {
+  if (isLoading === Status.Pending) {
     return <Loader />;
   }
 
@@ -37,7 +38,7 @@ function Banner(): JSX.Element {
         </span>
         <Link
           className="btn"
-          to={generatePath(AppRoute.Product, {id: String(promoCamera.id), tab: AppRoute.ProductDescriptionTab})}
+          to={generatePath(AppRoute.Product, {id: String(promoCamera.id), tab: AppRoute.ProductDescriptionTabx})}
         >
           Подробнее
         </Link>

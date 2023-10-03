@@ -14,7 +14,7 @@ const initialState: PromoSlice = {
 };
 
 export const promoSlice = createSlice({
-  name: NameSpace.CamerasData,
+  name: NameSpace.PromoData,
   initialState,
   reducers: {},
   extraReducers(builder) {
