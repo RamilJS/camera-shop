@@ -26,3 +26,5 @@ export enum Status {
   Success = 'SUCCESS',
   Error = 'ERROR',
 }
+
+export const TIMEOUT_SWIPER = 3000;

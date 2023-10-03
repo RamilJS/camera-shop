@@ -9,7 +9,8 @@ import { useAppSelector } from '../../hooks';
 import { getPromoStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
 import { Promo } from '../../types/promo';
-import { AppRoute, Status} from '../../const';
+import { AppRoute, Status, TIMEOUT_SWIPER } from '../../const';
+import'./banner.css';
 
 type PromoProps = {
   promoCamera: Promo[] | null;
@@ -25,15 +26,12 @@ function Banner({promoCamera}: PromoProps): JSX.Element {
 
   const pagination = {
     clickable: true,
-    renderBullet: function (_ : number, className : string) {
-      return `<span class="${ className }"></span>`;
-    },
   };
 
   return (
     <Swiper
       autoplay={{
-        delay: 3000,
+        delay: TIMEOUT_SWIPER,
         disableOnInteraction: false,
       }}
       pagination = {pagination}
