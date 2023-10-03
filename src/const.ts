@@ -18,7 +18,6 @@ export enum APIRoute {
 
 export enum NameSpace {
   CamerasData = 'CAMERAS_DATA',
-  PromoData = 'PROMO_DATA',
 }
 
 export enum Status {

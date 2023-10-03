@@ -1,15 +1,19 @@
-import { Link, generatePath } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-import { getPromo, getPromoStatus } from '../../store/promo-data/promo-data.selectors';
+import { Status} from '../../const';
+import { Promo } from '../../types/promo';
+import { getPromoStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
-import { AppRoute, Status } from '../../const';
 
-function Banner(): JSX.Element {
-  const promoCamera = useAppSelector(getPromo);
-  //console.log(promoCamera);
+type PromoProps = {
+  promoCamera: Promo | null;
+}
+
+function Banner({promoCamera}: PromoProps): JSX.Element {
+
   const isLoading = useAppSelector(getPromoStatus);
 
-  if (isLoading === Status.Pending) {
+  if (isLoading === Status.Pending || !promoCamera) {
     return <Loader />;
   }
 
@@ -38,7 +42,8 @@ function Banner(): JSX.Element {
         </span>
         <Link
           className="btn"
-          to={generatePath(AppRoute.Product, {id: String(promoCamera.id), tab: AppRoute.ProductDescriptionTabx})}
+          //to={generatePath(AppRoute.Product, {id: String(promoCamera.id), tab: AppRoute.ProductDescriptionTabx})}
+          to={'#'}
         >
           Подробнее
         </Link>

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Banner from '../../components/banner/banner';
@@ -7,12 +9,25 @@ import CatalogFilter from '../../components/catalog-filter/catalog-filter';
 import CatalogSort from '../../components/catalog-sort/catalog-sort';
 import Pagination from '../../components/pagination/pagination';
 import CatalogCardList from '../../components/catalog-card-list/catalog-card-list';
+import { store } from '../../store';
+import { getPromo } from '../../store/cameras-data/selectors';
+import { fetchPromoAction } from '../../store/api-actions';
+import { fetchCamerasAction } from '../../store/api-actions';
+import { getCameras } from '../../store/cameras-data/selectors';
 import { AppRoute } from '../../const';
-import { useAppSelector } from '../../hooks';
-import { getCameras } from '../../store/cameras-data/cameras-data.selectors';
+
 
 function Catalog(): JSX.Element {
+  const dispatch = useAppDispatch;
   const cameras = useAppSelector(getCameras);
+  const promoCamera = useAppSelector(getPromo);
+  //console.log(promoCamera);
+
+  useEffect(() => {
+    store.dispatch(fetchPromoAction());
+    store.dispatch(fetchCamerasAction());
+  }, [dispatch]);
+
 
   return (
     <>
@@ -22,7 +37,7 @@ function Catalog(): JSX.Element {
       <div className="wrapper">
         <Header />
         <main>
-          <Banner />
+          <Banner promoCamera={promoCamera}/>
           <div className="page-content">
             <div className="breadcrumbs">
               <div className="container">

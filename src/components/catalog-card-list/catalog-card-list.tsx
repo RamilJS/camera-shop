@@ -1,7 +1,7 @@
 import CatalogCard from '../catalog-card/catalog-card';
 import { Camera } from '../../types/camera';
 import { useAppSelector } from '../../hooks';
-import { getStatus } from '../../store/cameras-data/cameras-data.selectors';
+import { getStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
 import { Status } from '../../const';
 
