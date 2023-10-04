@@ -1,33 +1,35 @@
+import { Link } from 'react-router-dom';
+
 
 function Pagination(): JSX.Element {
   return (
     <div className="pagination">
       <ul className="pagination__list">
         <li className="pagination__item">
-          <a
+          <Link
             className="pagination__link pagination__link--active"
-            href={'1'}
+            to={'1'}
           >
             1
-          </a>
+          </Link>
         </li>
         <li className="pagination__item">
-          <a className="pagination__link" href={'2'}>
+          <Link className="pagination__link" to={'2'}>
             2
-          </a>
+          </Link>
         </li>
         <li className="pagination__item">
-          <a className="pagination__link" href={'3'}>
+          <Link className="pagination__link" to={'3'}>
             3
-          </a>
+          </Link>
         </li>
         <li className="pagination__item">
-          <a
+          <Link
             className="pagination__link pagination__link--text"
-            href={'2'}
+            to={'2'}
           >
             Далее
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
