@@ -48,11 +48,17 @@ function Catalog(): JSX.Element {
   const showNextButton = currentPage < pageCount;
 
   const pageNumbers = [];
-  for (let i = 1; i <= pageCount; i++) {
-    if (pageCount <= CATALOG_PAGE_COUNT || i <= CATALOG_PAGE_COUNT || (i >= currentPage - 1 && i <= currentPage + 1) || i === pageCount) {
-      pageNumbers.push(i);
-    }
+  let startPage = Math.max(1, currentPage - 1);
+  const endPage = Math.min(pageCount, startPage + CATALOG_PAGE_COUNT - 1);
+
+  if (endPage - startPage < CATALOG_PAGE_COUNT - 1) {
+    startPage = Math.max(1, endPage - CATALOG_PAGE_COUNT + 1);
   }
+
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
+
 
   const handlePageChange = (pageNumber: number) => {
     setSearchParams({ page: pageNumber.toString() });
