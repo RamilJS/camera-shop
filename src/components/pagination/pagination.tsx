@@ -1,36 +1,59 @@
 import { Link } from 'react-router-dom';
 
+type PaginationProps = {
+  showPrevButton: boolean;
+  showNextButton: boolean;
+  currentPage: number;
+  handlePageChange: (arg0: number) => void;
+  pageNumbers: number[];
+}
 
-function Pagination(): JSX.Element {
+function Pagination({showPrevButton, showNextButton, currentPage, handlePageChange, pageNumbers}: PaginationProps): JSX.Element {
+
   return (
     <div className="pagination">
       <ul className="pagination__list">
-        <li className="pagination__item">
-          <Link
-            className="pagination__link pagination__link--active"
-            to={'1'}
-          >
-            1
-          </Link>
-        </li>
-        <li className="pagination__item">
-          <Link className="pagination__link" to={'2'}>
-            2
-          </Link>
-        </li>
-        <li className="pagination__item">
-          <Link className="pagination__link" to={'3'}>
-            3
-          </Link>
-        </li>
-        <li className="pagination__item">
-          <Link
-            className="pagination__link pagination__link--text"
-            to={'2'}
-          >
-            Далее
-          </Link>
-        </li>
+        {showPrevButton && (
+          <li className="pagination__item">
+            <Link
+              className="pagination__link"
+              to={`?page=${currentPage - 1}`}
+              onClick={() => {
+                handlePageChange(currentPage - 1);
+              }}
+            >
+              Назад
+            </Link>
+          </li>
+        )}
+
+        {pageNumbers.map((pageNumber) => (
+          <li key={pageNumber} className="pagination__item">
+            <Link
+              className={`pagination__link ${pageNumber === currentPage ? 'pagination__link--active' : ''}`}
+              to={`?page=${pageNumber}`}
+              onClick={() => {
+                handlePageChange(pageNumber);
+              }}
+            >
+              {pageNumber}
+            </Link>
+          </li>
+        ))}
+
+        {showNextButton && (
+          <li className="pagination__item">
+            <Link
+              className="pagination__link pagination__link--text"
+              to={`?page=${currentPage + 1}`}
+              onClick={() => {
+                handlePageChange(currentPage + 1);
+              }}
+            >
+              Далее
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 //import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useAppSelector } from '../../hooks';
@@ -15,7 +15,7 @@ import { getPromo } from '../../store/cameras-data/selectors';
 //import { fetchPromoAction } from '../../store/api-actions';
 //import { fetchCamerasAction } from '../../store/api-actions';
 import { getCameras } from '../../store/cameras-data/selectors';
-import { AppRoute } from '../../const';
+import { AppRoute, ITEMS_PER_PAGE, CATALOG_PAGE_COUNT } from '../../const';
 
 
 function Catalog(): JSX.Element {
@@ -27,6 +27,38 @@ function Catalog(): JSX.Element {
     store.dispatch(fetchPromoAction());
     store.dispatch(fetchCamerasAction());
   }, [dispatch]);*/
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const totalCount = cameras.length;
+  const pageCount = Math.ceil(totalCount / ITEMS_PER_PAGE);
+
+  let currentPage = parseInt(searchParams.get('page') || '1', 10);
+
+  if (currentPage < 1) {
+    currentPage = 1;
+  } else if (currentPage > pageCount) {
+    currentPage = pageCount;
+  }
+
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalCount);
+
+  const showPrevButton = currentPage > 1;
+  const showNextButton = currentPage < pageCount;
+
+  const pageNumbers = [];
+  for (let i = 1; i <= pageCount; i++) {
+    if (pageCount <= CATALOG_PAGE_COUNT || i <= CATALOG_PAGE_COUNT || (i >= currentPage - 1 && i <= currentPage + 1) || i === pageCount) {
+      pageNumbers.push(i);
+    }
+  }
+
+  const handlePageChange = (pageNumber: number) => {
+    setSearchParams({ page: pageNumber.toString() });
+  };
+
+  const visibleCameras = cameras.slice(startIndex, endIndex);
 
   return (
     <>
@@ -66,8 +98,14 @@ function Catalog(): JSX.Element {
                   </div>
                   <div className="catalog__content">
                     <CatalogSort />
-                    <CatalogCardList cameras={cameras} />
-                    <Pagination />
+                    <CatalogCardList cameras={visibleCameras} />
+                    <Pagination
+                      showPrevButton={showPrevButton}
+                      showNextButton={showNextButton}
+                      currentPage={currentPage}
+                      handlePageChange={handlePageChange}
+                      pageNumbers={pageNumbers}
+                    />
                   </div>
                 </div>
               </div>
