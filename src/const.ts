@@ -5,6 +5,7 @@ export const CATALOG_PAGE_COUNT = 3;
 
 export const enum AppRoute {
   Main = '/',
+  Cameras = '/cameras/',
   Product = '/cameras/:id',
   Basket = '/basket',
   NotFound = '/not-found-screen',
@@ -22,6 +23,8 @@ export enum APIRoute {
 
 export enum NameSpace {
   CamerasData = 'CAMERAS_DATA',
+  BasketData = 'BASKET_DATA',
+  ProductData = 'PRODUCT_DATA',
 }
 
 export enum Status {

@@ -1,5 +1,25 @@
+import { useAppSelector } from '../../hooks';
+import Loader from '../loader/loader';
+import { Camera } from '../../types/camera';
+import { getSelectedProductStatus } from '../../store/product-data/selectors';
+import { Status } from '../../const';
 
-function ProductItem(): JSX.Element {
+type ProductItemProps = {
+  product: Camera | null;
+}
+
+function ProductItem({product}: ProductItemProps): JSX.Element {
+  //const loadingStatus = useAppSelector(getSelectedProductStatus);
+  //console.log(loadingStatus);
+/*
+  if (loadingStatus === Status.Pending) {
+    return <Loader />;
+  }
+
+  if (loadingStatus === Status.Error) {
+    return <p>Error loading product</p>;
+  }*/
+
   return (
     <section className="product">
       <div className="container">
@@ -7,19 +27,19 @@ function ProductItem(): JSX.Element {
           <picture>
             <source
               type="image/webp"
-              srcSet="img/content/das-auge.webp, img/content/das-auge@2x.webp 2x"
+              srcSet={`${product.previewImgWebp}, ${product.previewImgWebp2x} 2x`}
             />
             <img
-              src="img/content/das-auge.jpg"
-              srcSet="img/content/das-auge@2x.jpg 2x"
+              src={`${product.previewImg}`}
+              srcSet={`${product.previewImg2x} 2x`}
               width={560}
               height={480}
-              alt="Ретрокамера Das Auge IV"
+              alt={`${product.name}`}
             />
           </picture>
         </div>
         <div className="product__content">
-          <h1 className="title title--h3">Ретрокамера Das Auge IV</h1>
+          <h1 className="title title--h3">{product.name}</h1>
           <div className="rate product__rate">
             <svg width={17} height={16} aria-hidden="true">
               <use xlinkHref="#icon-full-star" />
@@ -42,7 +62,7 @@ function ProductItem(): JSX.Element {
             </p>
           </div>
           <p className="product__price">
-            <span className="visually-hidden">Цена:</span>73 450 ₽
+            <span className="visually-hidden">Цена:</span>{product.price} ₽
           </p>
           <button className="btn btn--purple" type="button">
             <svg width={24} height={16} aria-hidden="true">
@@ -64,35 +84,26 @@ function ProductItem(): JSX.Element {
                 <ul className="product__tabs-list">
                   <li className="item-list">
                     <span className="item-list__title">Артикул:</span>
-                    <p className="item-list__text"> DA4IU67AD5</p>
+                    <p className="item-list__text"> {product.vendorCode}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Категория:</span>
-                    <p className="item-list__text">Видеокамера</p>
+                    <p className="item-list__text">{product.category}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Тип камеры:</span>
-                    <p className="item-list__text">Коллекционная</p>
+                    <p className="item-list__text">{product.type}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Уровень:</span>
-                    <p className="item-list__text">Любительский</p>
+                    <p className="item-list__text">{product.level}</p>
                   </li>
                 </ul>
               </div>
               <div className="tabs__element is-active">
                 <div className="product__tabs-text">
                   <p>
-                    Немецкий концерн BRW разработал видеокамеру Das Auge IV
-                    в&nbsp;начале 80-х годов, однако она до&nbsp;сих пор
-                    пользуется популярностью среди коллекционеров
-                    и&nbsp;яростных почитателей старинной техники.
-                  </p>
-                  <p>
-                    Вы&nbsp;тоже можете прикоснуться к&nbsp;волшебству
-                    аналоговой съёмки, заказав этот чудо-аппарат. Кто знает,
-                    может с&nbsp;Das Auge IV&nbsp;начнётся ваш путь
-                    к&nbsp;наградам всех престижных кинофестивалей.
+                    {product.description}
                   </p>
                 </div>
               </div>

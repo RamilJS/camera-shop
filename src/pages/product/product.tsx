@@ -1,13 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../hooks';
 import { Helmet } from 'react-helmet-async';
+import { useAppSelector } from '../../hooks';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import SimilarProduct from '../../components/similar-product/similar-product';
 import ReviewListBlock from '../../components/review-list-block/review-list-block';
 import ProductItem from '../../components/product-item/product-item';
+import { fetchCameraAction } from '../../store/api-actions';
+import { getSelectedProduct } from '../../store/product-data/selectors';
 import { AppRoute } from '../../const';
 
 function Product(): JSX.Element {
+  const selectedProduct = useAppSelector(getSelectedProduct);
+  //console.log(selectedProduct);
+  const dispatch = useAppDispatch();
+
+  const { id } = useParams();
+  const cameraId = Number(id);
+  //const cameraId = Number(useParams().id);
+
+  useEffect(() => {
+    dispatch(fetchCameraAction(cameraId));
+  },[cameraId, dispatch]);
+
   return (
     <>
       <Helmet>
@@ -45,7 +62,7 @@ function Product(): JSX.Element {
               </div>
             </div>
             <div className="page-content__section">
-              <ProductItem/>
+              <ProductItem product={selectedProduct} />
             </div>
             <div className="page-content__section">
               <SimilarProduct />
