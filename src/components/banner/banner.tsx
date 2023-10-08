@@ -41,7 +41,6 @@ function Banner({promoCamera}: PromoProps): JSX.Element {
       {promoCamera.map((elem) => (
         <SwiperSlide key={`${elem.id}banner`}>
           <div
-
             className="banner"
           >
             <picture>
@@ -65,7 +64,7 @@ function Banner({promoCamera}: PromoProps): JSX.Element {
               <span className="banner__text">
           Профессиональная камера от&nbsp;известного производителя
               </span>
-              <Link className="btn" to={`${AppRoute.Main}${elem.id}`}>
+              <Link className="btn" to={`${AppRoute.Cameras}${elem.id}`}>
           Подробнее
               </Link>
             </p>
