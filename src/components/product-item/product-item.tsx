@@ -1,24 +1,36 @@
-import { useAppSelector } from '../../hooks';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { fetchCameraAction } from '../../store/api-actions';
+//import { getSelectedProductStatus } from '../../store/product-data/selectors';
+import { getSelectedProductStatus } from '../../store/cameras-data/selectors';
+//import { getSelectedProduct } from '../../store/product-data/selectors';
+import { getSelectedProduct } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
-import { Camera } from '../../types/camera';
-import { getSelectedProductStatus } from '../../store/product-data/selectors';
 import { Status } from '../../const';
 
-type ProductItemProps = {
-  product: Camera | null;
-}
+function ProductItem(): JSX.Element {
+  const selectedProduct = useAppSelector(getSelectedProduct);
+  //console.log(selectedProduct);
+  const dispatch = useAppDispatch();
 
-function ProductItem({product}: ProductItemProps): JSX.Element {
-  //const loadingStatus = useAppSelector(getSelectedProductStatus);
+  const { id } = useParams();
+  const cameraId = Number(id);
+  //const cameraId = Number(useParams().id);
+
+  useEffect(() => {
+    dispatch(fetchCameraAction(cameraId));
+  },[cameraId, dispatch]);
+  const loadingStatus = useAppSelector(getSelectedProductStatus);
   //console.log(loadingStatus);
-/*
+
   if (loadingStatus === Status.Pending) {
     return <Loader />;
   }
 
   if (loadingStatus === Status.Error) {
     return <p>Error loading product</p>;
-  }*/
+  }
 
   return (
     <section className="product">
@@ -27,19 +39,19 @@ function ProductItem({product}: ProductItemProps): JSX.Element {
           <picture>
             <source
               type="image/webp"
-              srcSet={`${product.previewImgWebp}, ${product.previewImgWebp2x} 2x`}
+              srcSet={`${selectedProduct?.previewImgWebp}, ${selectedProduct?.previewImgWebp2x} 2x`}
             />
             <img
-              src={`${product.previewImg}`}
-              srcSet={`${product.previewImg2x} 2x`}
+              src={selectedProduct?.previewImg}
+              srcSet={selectedProduct?.previewImg2x}
               width={560}
               height={480}
-              alt={`${product.name}`}
+              alt={selectedProduct?.name}
             />
           </picture>
         </div>
         <div className="product__content">
-          <h1 className="title title--h3">{product.name}</h1>
+          <h1 className="title title--h3">{selectedProduct?.name}</h1>
           <div className="rate product__rate">
             <svg width={17} height={16} aria-hidden="true">
               <use xlinkHref="#icon-full-star" />
@@ -62,7 +74,7 @@ function ProductItem({product}: ProductItemProps): JSX.Element {
             </p>
           </div>
           <p className="product__price">
-            <span className="visually-hidden">Цена:</span>{product.price} ₽
+            <span className="visually-hidden">Цена:</span>{selectedProduct?.price} ₽
           </p>
           <button className="btn btn--purple" type="button">
             <svg width={24} height={16} aria-hidden="true">
@@ -84,26 +96,26 @@ function ProductItem({product}: ProductItemProps): JSX.Element {
                 <ul className="product__tabs-list">
                   <li className="item-list">
                     <span className="item-list__title">Артикул:</span>
-                    <p className="item-list__text"> {product.vendorCode}</p>
+                    <p className="item-list__text"> {selectedProduct?.vendorCode}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Категория:</span>
-                    <p className="item-list__text">{product.category}</p>
+                    <p className="item-list__text">{selectedProduct?.category}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Тип камеры:</span>
-                    <p className="item-list__text">{product.type}</p>
+                    <p className="item-list__text">{selectedProduct?.type}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Уровень:</span>
-                    <p className="item-list__text">{product.level}</p>
+                    <p className="item-list__text">{selectedProduct?.level}</p>
                   </li>
                 </ul>
               </div>
               <div className="tabs__element is-active">
                 <div className="product__tabs-text">
                   <p>
-                    {product.description}
+                    {selectedProduct?.description}
                   </p>
                 </div>
               </div>

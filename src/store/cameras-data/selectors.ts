@@ -10,3 +10,8 @@ export const getStatus = (state: State): Status => state[NameSpace.CamerasData].
 
 export const getPromo = (state: State): Promo[] | null => state[NameSpace.CamerasData].promoCamera.data;
 export const getPromoStatus = (state: State): Status => state[NameSpace.CamerasData].promoCamera.status;
+
+export const getSelectedProduct = (state: State) => state[NameSpace.CamerasData].camera.product as Camera;
+export const getSelectedProductStatus = (state: State): Status => state[NameSpace.CamerasData].camera.loadingStatus;
+
+export const getCartSuccessModalStatus = (state: State): boolean => state[NameSpace.CamerasData].camera.successModalOpen;

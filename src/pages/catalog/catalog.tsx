@@ -16,7 +16,6 @@ import { getPromo } from '../../store/cameras-data/selectors';
 //import { fetchCamerasAction } from '../../store/api-actions';
 import { getCameras } from '../../store/cameras-data/selectors';
 import { AppRoute, ITEMS_PER_PAGE, CATALOG_PAGE_COUNT } from '../../const';
-
 import CatalogPopup from '../../components/catalog-popups/catalog-popup/catalog-popup';
 
 
@@ -120,7 +119,7 @@ function Catalog(): JSX.Element {
           </div>
         </main>
         <Footer />
-        <CatalogPopup/>
+        
       </div>
     </>
   );
