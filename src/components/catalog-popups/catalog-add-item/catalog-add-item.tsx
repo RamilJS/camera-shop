@@ -1,5 +1,14 @@
+import { Camera } from '../../../types/camera';
 
-function CatalogAddItem(): JSX.Element {
+
+type CatalogAddItemProps = {
+  camera: Camera | null;
+  handleAddToCartClick: () => void;
+  handleModalClose: () => void;
+}
+
+function CatalogAddItem({camera, handleAddToCartClick, handleModalClose}: CatalogAddItemProps): JSX.Element {
+
   return (
     <div className="modal is-active">
       <div className="modal__wrapper">
@@ -11,34 +20,35 @@ function CatalogAddItem(): JSX.Element {
               <picture>
                 <source
                   type="image/webp"
-                  srcSet="img/content/orlenok.webp, img/content/orlenok@2x.webp 2x"
+                  srcSet={`${camera.previewImgWebp}, ${camera.previewImgWebp2x} 2x`}
                 />
                 <img
-                  src="img/content/orlenok.jpg"
-                  srcSet="img/content/orlenok@2x.jpg 2x"
+                  src={camera.previewImg}
+                  srcSet={camera.previewImg2x}
                   width={140}
                   height={120}
-                  alt="Фотоаппарат «Орлёнок»"
+                  alt={camera.name}
                 />
               </picture>
             </div>
             <div className="basket-item__description">
-              <p className="basket-item__title">Орлёнок</p>
+              <p className="basket-item__title">{camera.name}</p>
               <ul className="basket-item__list">
                 <li className="basket-item__list-item">
                   <span className="basket-item__article">Артикул:</span>{' '}
-                  <span className="basket-item__number">O78DFGSD832</span>
+                  <span className="basket-item__number">{camera.vendorCode}</span>
                 </li>
-                <li className="basket-item__list-item">Плёночная фотокамера</li>
-                <li className="basket-item__list-item">Любительский уровень</li>
+                <li className="basket-item__list-item">{camera.type} {camera.category}</li>
+                <li className="basket-item__list-item">{camera.level} уровень</li>
               </ul>
               <p className="basket-item__price">
-                <span className="visually-hidden">Цена:</span>18 970 ₽
+                <span className="visually-hidden">Цена:</span>{camera.price} ₽
               </p>
             </div>
           </div>
           <div className="modal__buttons">
             <button
+              onClick={handleAddToCartClick}
               className="btn btn--purple modal__btn modal__btn--fit-width"
               type="button"
             >
@@ -48,7 +58,10 @@ function CatalogAddItem(): JSX.Element {
               Добавить в корзину
             </button>
           </div>
-          <button className="cross-btn" type="button" aria-label="Закрыть попап">
+          <button
+            onClick={handleModalClose}
+            className="cross-btn" type="button" aria-label="Закрыть попап"
+          >
             <svg width={10} height={10} aria-hidden="true">
               <use xlinkHref="#icon-close" />
             </svg>

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Camera } from '../../types/camera';
 //import { useAppSelector } from '../../hooks';
-//import getBasket
+//import getBasketCameras
+//import { useAppDispatch } from '../../hooks';
+//import { selectProduct } from '../../store/product-data/product-data';
 import { AppRoute } from '../../const';
 
 type CatalogCardProps = {
@@ -80,6 +82,7 @@ function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
           <button
             className="btn btn--purple product-card__btn"
             type="button"
+            //onClick={handleBuyClick}
           >
             Купить
           </button>}

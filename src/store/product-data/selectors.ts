@@ -5,3 +5,5 @@ import { NameSpace, Status } from '../../const';
 
 export const getSelectedProduct = (state: State): Camera | null => state[NameSpace.ProductData].product;
 export const getSelectedProductStatus = (state: State): Status => state[NameSpace.ProductData].loadingStatus;
+
+export const getCartSuccessModalStatus = (state: State): boolean => state[NameSpace.ProductData].successModalOpen;
