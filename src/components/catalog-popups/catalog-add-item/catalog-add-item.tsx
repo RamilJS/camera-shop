@@ -1,6 +1,5 @@
 import { Camera } from '../../../types/camera';
 
-
 type CatalogAddItemProps = {
   camera: Camera;
   handleAddToBasketClick: () => void;

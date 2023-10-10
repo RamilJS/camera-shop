@@ -2,16 +2,21 @@ import ReactModal from 'react-modal';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
-import { getSelectedProduct, getCartSuccessModalStatus } from '../../../store/cameras-data/selectors';
-import { selectProduct, setSuccessModalOpen } from '../../../store/cameras-data/cameras-data';
+//import { getCameraInBasketModal } from '../../../store/basket-data/selectors';
+import { getBasketSuccessModalStatus } from '../../../store/basket-data/selectors';
+import { setSuccessModalOpen } from '../../../store/basket-data/basket-data';
+//import { setCameraInBasketModal } from '../../../store/basket-data/basket-data';
+import { getSelectedProduct } from '../../../store/cameras-data/selectors';
+import { selectProduct } from '../../../store/cameras-data/cameras-data';
 import CatalogAddItem from '../catalog-add-item/catalog-add-item';
 import CatalogAddSucces from '../catalog-add-succes/catalog-add-succes';
 import { AppRoute } from '../../../const';
 
 function CatalogPopup(): JSX.Element {
 
+  // const camera = useAppSelector(getCameraInBasketModal);
   const camera = useAppSelector(getSelectedProduct);
-  const isSuccessModalOpen = useAppSelector(getCartSuccessModalStatus);
+  const isSuccessModalOpen = useAppSelector(getBasketSuccessModalStatus);
 
   const [isModalOpen, setIsModalOpen] = useState(true);
 
@@ -29,7 +34,7 @@ function CatalogPopup(): JSX.Element {
   const handleModalClose = () => onModalClose();
 
   const handleAddToBasketClick = () => {
-    //dispatch(addCameraToBasket(camera));
+
     dispatch(setSuccessModalOpen(true));
   };
 
@@ -45,6 +50,7 @@ function CatalogPopup(): JSX.Element {
   return (
     <ReactModal
       isOpen={isModalOpen}
+      //isOpen
       ariaHideApp={false}
       style={{content: {inset: 'unset'}}}
       bodyOpenClassName='scroll-lock'

@@ -6,7 +6,6 @@ import { NameSpace, Status } from '../../const';
 import { Camera } from '../../types/camera';
 import { Promo } from '../../types/promo';
 
-
 export type CameraSlice = {
   cameras: {
     data: Camera[];
@@ -15,7 +14,6 @@ export type CameraSlice = {
   camera: {
     product: Camera | null;
     loadingStatus: Status;
-    successModalOpen: boolean;
   };
   promoCamera: {
     data: Promo[] | null;
@@ -31,7 +29,6 @@ const initialState: CameraSlice = {
   camera: {
     product: null,
     loadingStatus: Status.Unsent,
-    successModalOpen: false,
   },
   promoCamera: {
     data: null,
@@ -46,9 +43,6 @@ export const camerasSlice = createSlice({
     selectProduct: (state, action: PayloadAction<Camera | null>) => {
       state.camera.product = action.payload;
       state.camera.loadingStatus = Status.Success;
-    },
-    setSuccessModalOpen: (state, action: PayloadAction<boolean>) => {
-      state.camera.successModalOpen = action.payload;
     },
   },
   extraReducers(builder) {
@@ -86,5 +80,5 @@ export const camerasSlice = createSlice({
   }
 });
 
-export const {selectProduct, setSuccessModalOpen } = camerasSlice.actions;
+export const { selectProduct } = camerasSlice.actions;
 
