@@ -1,18 +1,15 @@
 
-//import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
-//import { getSelectedProduct, getCartSuccessModalStatus } from '../../../store/product-data/selectors';
-//import { selectProduct, setSuccessModalOpen } from '../../../store/product-data/product-data';
+import { getSelectedProduct, getCartSuccessModalStatus } from '../../../store/cameras-data/selectors';
+import { selectProduct, setSuccessModalOpen } from '../../../store/cameras-data/cameras-data';
 import CatalogAddItem from '../catalog-add-item/catalog-add-item';
 import CatalogAddSucces from '../catalog-add-succes/catalog-add-succes';
-//import { AppRoute } from '../../../const';
 import ReactModal from 'react-modal';
 
 function CatalogPopup(): JSX.Element {
-  //const camera = useAppSelector(getSelectedProduct);
-  //const isSuccessModalOpen = useAppSelector(getCartSuccessModalStatus);
+  const camera = useAppSelector(getSelectedProduct);
+  const isSuccessModalOpen = useAppSelector(getCartSuccessModalStatus);
 
-  //const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const onModalClose = () => {
@@ -26,13 +23,8 @@ function CatalogPopup(): JSX.Element {
     dispatch(setSuccessModalOpen(true));
   };
 
-  /*const handleLinkToCartClick = () => {
-    onModalClose();
-    navigate(AppRoute.Main);
-  };*/
-
   if (!camera) {
-    return <div></div>;
+    return <div>{'We dont have product at this moment'}</div>;
   }
 
   return (
@@ -50,7 +42,6 @@ function CatalogPopup(): JSX.Element {
         :
         <CatalogAddItem camera={camera} handleAddToCartClick={handleAddToCartClick} handleModalClose={handleModalClose} />}
     </ReactModal>
-
   );
 }
 

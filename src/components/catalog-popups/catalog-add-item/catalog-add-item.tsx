@@ -2,7 +2,7 @@ import { Camera } from '../../../types/camera';
 
 
 type CatalogAddItemProps = {
-  camera: Camera | null;
+  camera: Camera;
   handleAddToCartClick: () => void;
   handleModalClose: () => void;
 }
@@ -20,29 +20,29 @@ function CatalogAddItem({camera, handleAddToCartClick, handleModalClose}: Catalo
               <picture>
                 <source
                   type="image/webp"
-                  srcSet={`${camera.previewImgWebp}, ${camera.previewImgWebp2x} 2x`}
+                  srcSet={`${camera?.previewImgWebp}, ${camera?.previewImgWebp2x} 2x`}
                 />
                 <img
-                  src={camera.previewImg}
-                  srcSet={camera.previewImg2x}
+                  src={camera?.previewImg}
+                  srcSet={camera?.previewImg2x}
                   width={140}
                   height={120}
-                  alt={camera.name}
+                  alt={camera?.name}
                 />
               </picture>
             </div>
             <div className="basket-item__description">
-              <p className="basket-item__title">{camera.name}</p>
+              <p className="basket-item__title">{camera?.name}</p>
               <ul className="basket-item__list">
                 <li className="basket-item__list-item">
                   <span className="basket-item__article">Артикул:</span>{' '}
-                  <span className="basket-item__number">{camera.vendorCode}</span>
+                  <span className="basket-item__number">{camera?.vendorCode}</span>
                 </li>
-                <li className="basket-item__list-item">{camera.type} {camera.category}</li>
-                <li className="basket-item__list-item">{camera.level} уровень</li>
+                <li className="basket-item__list-item">{camera?.type} {camera?.category}</li>
+                <li className="basket-item__list-item">{camera?.level} уровень</li>
               </ul>
               <p className="basket-item__price">
-                <span className="visually-hidden">Цена:</span>{camera.price} ₽
+                <span className="visually-hidden">Цена:</span>{camera?.price} ₽
               </p>
             </div>
           </div>

@@ -16,8 +16,6 @@ export type CameraSlice = {
     product: Camera | null;
     loadingStatus: Status;
     successModalOpen: boolean;
-    //similarCameras: Camera[];
-    //isSimilarCamerasLoading: boolean;
   };
   promoCamera: {
     data: Promo[] | null;
@@ -34,8 +32,6 @@ const initialState: CameraSlice = {
     product: null,
     loadingStatus: Status.Unsent,
     successModalOpen: false,
-    //similarCameras: [],
-    //isSimilarCamerasLoading: false,
   },
   promoCamera: {
     data: null,
@@ -49,7 +45,7 @@ export const camerasSlice = createSlice({
   reducers: {
     selectProduct: (state, action: PayloadAction<Camera | null>) => {
       state.camera.product = action.payload;
-      //state.loadingStatus = Status.Success;
+      state.camera.loadingStatus = Status.Success;
     },
     setSuccessModalOpen: (state, action: PayloadAction<boolean>) => {
       state.camera.successModalOpen = action.payload;
@@ -90,5 +86,5 @@ export const camerasSlice = createSlice({
   }
 });
 
-//export const {selectProduct, setSuccessModalOpen } = productSlice.actions;
+export const {selectProduct, setSuccessModalOpen } = camerasSlice.actions;
 

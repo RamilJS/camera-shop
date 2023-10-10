@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { fetchCameraAction } from '../../store/api-actions';
-//import { getSelectedProductStatus } from '../../store/product-data/selectors';
+
 import { getSelectedProductStatus } from '../../store/cameras-data/selectors';
 //import { getSelectedProduct } from '../../store/product-data/selectors';
 import { getSelectedProduct } from '../../store/cameras-data/selectors';
@@ -11,18 +11,15 @@ import { Status } from '../../const';
 
 function ProductItem(): JSX.Element {
   const selectedProduct = useAppSelector(getSelectedProduct);
-  //console.log(selectedProduct);
   const dispatch = useAppDispatch();
 
-  const { id } = useParams();
-  const cameraId = Number(id);
-  //const cameraId = Number(useParams().id);
+  const cameraId = Number(useParams().id);
 
   useEffect(() => {
     dispatch(fetchCameraAction(cameraId));
   },[cameraId, dispatch]);
+
   const loadingStatus = useAppSelector(getSelectedProductStatus);
-  //console.log(loadingStatus);
 
   if (loadingStatus === Status.Pending) {
     return <Loader />;

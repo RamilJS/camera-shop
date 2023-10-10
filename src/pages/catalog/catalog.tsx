@@ -1,8 +1,6 @@
 import { Link, useSearchParams } from 'react-router-dom';
-//import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useAppSelector } from '../../hooks';
-//import { useAppDispatch } from '../../hooks';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Banner from '../../components/banner/banner';
@@ -10,17 +8,13 @@ import CatalogFilter from '../../components/catalog-filter/catalog-filter';
 import CatalogSort from '../../components/catalog-sort/catalog-sort';
 import Pagination from '../../components/pagination/pagination';
 import CatalogCardList from '../../components/catalog-card-list/catalog-card-list';
-//import { store } from '../../store';
 import { getPromo } from '../../store/cameras-data/selectors';
-//import { fetchPromoAction } from '../../store/api-actions';
-//import { fetchCamerasAction } from '../../store/api-actions';
 import { getCameras } from '../../store/cameras-data/selectors';
 import { AppRoute, ITEMS_PER_PAGE, CATALOG_PAGE_COUNT } from '../../const';
 import CatalogPopup from '../../components/catalog-popups/catalog-popup/catalog-popup';
 
 
 function Catalog(): JSX.Element {
-  //const dispatch = useAppDispatch;
   const cameras = useAppSelector(getCameras);
   const promoCamera = useAppSelector(getPromo);
 
@@ -119,7 +113,7 @@ function Catalog(): JSX.Element {
           </div>
         </main>
         <Footer />
-        
+        <CatalogPopup />
       </div>
     </>
   );
