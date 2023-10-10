@@ -1,18 +1,25 @@
 import ReactModal from 'react-modal';
-//import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
 import { getSelectedProduct, getCartSuccessModalStatus } from '../../../store/cameras-data/selectors';
 import { selectProduct, setSuccessModalOpen } from '../../../store/cameras-data/cameras-data';
 import CatalogAddItem from '../catalog-add-item/catalog-add-item';
 import CatalogAddSucces from '../catalog-add-succes/catalog-add-succes';
-//import { AppRoute } from '../../../const';
+import { AppRoute } from '../../../const';
 
 function CatalogPopup(): JSX.Element {
 
   const camera = useAppSelector(getSelectedProduct);
   const isSuccessModalOpen = useAppSelector(getCartSuccessModalStatus);
 
-  //const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  useEffect(() => {
+    setIsModalOpen(!!camera);
+  }, [camera]);
+
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const onModalClose = () => {
@@ -26,10 +33,10 @@ function CatalogPopup(): JSX.Element {
     dispatch(setSuccessModalOpen(true));
   };
 
-  /*const handleLinkToBasketClick = () => {
+  const handleLinkToBasketClick = () => {
     onModalClose();
     navigate(AppRoute.Basket);
-  };*/
+  };
 
   if (!camera) {
     return <div>{'We dont have product at this moment'}</div>;
@@ -37,7 +44,7 @@ function CatalogPopup(): JSX.Element {
 
   return (
     <ReactModal
-      isOpen
+      isOpen={isModalOpen}
       ariaHideApp={false}
       style={{content: {inset: 'unset'}}}
       bodyOpenClassName='scroll-lock'
@@ -46,9 +53,9 @@ function CatalogPopup(): JSX.Element {
     >
       {isSuccessModalOpen
         ?
-        <CatalogAddSucces />
+        <CatalogAddSucces handleModalClose={handleModalClose} handleLinkToBasketClick={handleLinkToBasketClick } />
         :
-        <CatalogAddItem camera={camera} handleAddToCartClick={handleAddToBasketClick} handleModalClose={handleModalClose} />}
+        <CatalogAddItem camera={camera} handleAddToBasketClick={handleAddToBasketClick} handleModalClose={handleModalClose} />}
     </ReactModal>
   );
 }

@@ -3,16 +3,16 @@ import { Camera } from '../../../types/camera';
 
 type CatalogAddItemProps = {
   camera: Camera;
-  handleAddToCartClick: () => void;
+  handleAddToBasketClick: () => void;
   handleModalClose: () => void;
 }
 
-function CatalogAddItem({camera, handleAddToCartClick, handleModalClose}: CatalogAddItemProps): JSX.Element {
+function CatalogAddItem({camera, handleAddToBasketClick, handleModalClose}: CatalogAddItemProps): JSX.Element {
 
   return (
     <div className="modal is-active">
       <div className="modal__wrapper">
-        <div className="modal__overlay" />
+        <div className="modal__overlay" onClick={handleModalClose}/>
         <div className="modal__content">
           <p className="title title--h4">Добавить товар в корзину</p>
           <div className="basket-item basket-item--short">
@@ -48,7 +48,7 @@ function CatalogAddItem({camera, handleAddToCartClick, handleModalClose}: Catalo
           </div>
           <div className="modal__buttons">
             <button
-              onClick={handleAddToCartClick}
+              onClick={handleAddToBasketClick}
               className="btn btn--purple modal__btn modal__btn--fit-width"
               type="button"
             >
