@@ -3,7 +3,6 @@ import { Camera } from '../../types/camera';
 //import { useAppSelector } from '../../hooks';
 //import getBasketCameras
 import { useAppDispatch } from '../../hooks';
-//import { selectProduct } from '../../store/product-data/product-data';
 import { selectProduct } from '../../store/cameras-data/cameras-data';
 import { AppRoute } from '../../const';
 
@@ -17,7 +16,6 @@ function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
   //const camerasInBasket = useAppSelector(getBasketCameras);
 
   const productCardClassName = isActive ? 'product-card is-active' : 'product-card';
-  //const inCart = сamera.find((cartCamera) => сamera.id === camera.id);
   //const inBasket = camerasInBasket.find((cameraInBasket) => cameraInBasket.id === camera.id);
   const inBasket = false;
 
