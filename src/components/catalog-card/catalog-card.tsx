@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import { Camera } from '../../types/camera';
 //import { useAppSelector } from '../../hooks';
 //import getBasketCameras
-//import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 //import { selectProduct } from '../../store/product-data/product-data';
+import { selectProduct } from '../../store/cameras-data/cameras-data';
 import { AppRoute } from '../../const';
 
 type CatalogCardProps = {
@@ -12,7 +13,7 @@ type CatalogCardProps = {
 }
 
 function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
-  //const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   //const camerasInBasket = useAppSelector(getBasketCameras);
 
   const productCardClassName = isActive ? 'product-card is-active' : 'product-card';
@@ -82,7 +83,7 @@ function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
           <button
             className="btn btn--purple product-card__btn"
             type="button"
-            //onClick={handleBuyClick}
+            onClick={() => dispatch(selectProduct(camera))}
           >
             Купить
           </button>}
