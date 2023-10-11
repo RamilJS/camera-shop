@@ -21,11 +21,11 @@ function SimilarProduct(): JSX.Element {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="img/content/fast-shot.webp, img/content/fast-shot@2x.webp 2x"
+                    srcSet="/img/content/fast-shot.webp, /img/content/fast-shot@2x.webp 2x"
                   />
                   <img
-                    src="img/content/fast-shot.jpg"
-                    srcSet="img/content/fast-shot@2x.jpg 2x"
+                    src="/img/content/fast-shot.jpg"
+                    srcSet="/img/content/fast-shot@2x.jpg 2x"
                     width={280}
                     height={240}
                     alt="Фотоаппарат FastShot MR-5"
@@ -133,11 +133,11 @@ function SimilarProduct(): JSX.Element {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="img/content/instaprinter.webp, img/content/instaprinter@2x.webp 2x"
+                    srcSet="/img/content/instaprinter.webp, /img/content/instaprinter@2x.webp 2x"
                   />
                   <img
-                    src="img/content/instaprinter.jpg"
-                    srcSet="img/content/instaprinter@2x.jpg 2x"
+                    src="/img/content/instaprinter.jpg"
+                    srcSet="/img/content/instaprinter@2x.jpg 2x"
                     width={280}
                     height={240}
                     alt="Фотоаппарат Instaprinter P2"
@@ -189,11 +189,11 @@ function SimilarProduct(): JSX.Element {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="img/content/fast-shot.webp, img/content/fast-shot@2x.webp 2x"
+                    srcSet="/img/content/fast-shot.webp, /img/content/fast-shot@2x.webp 2x"
                   />
                   <img
-                    src="img/content/fast-shot.jpg"
-                    srcSet="img/content/fast-shot@2x.jpg 2x"
+                    src="/img/content/fast-shot.jpg"
+                    srcSet="/img/content/fast-shot@2x.jpg 2x"
                     width={280}
                     height={240}
                     alt="Фотоаппарат FastShot MR-5"
@@ -244,11 +244,11 @@ function SimilarProduct(): JSX.Element {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="img/content/das-auge.webp, img/content/das-auge@2x.webp 2x"
+                    srcSet="/img/content/das-auge.webp, /img/content/das-auge@2x.webp 2x"
                   />
                   <img
-                    src="img/content/das-auge.jpg"
-                    srcSet="img/content/das-auge@2x.jpg 2x"
+                    src="/img/content/das-auge.jpg"
+                    srcSet="/img/content/das-auge@2x.jpg 2x"
                     width={280}
                     height={240}
                     alt="Ретрокамера «Das Auge IV»"
@@ -301,11 +301,11 @@ function SimilarProduct(): JSX.Element {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="img/content/instaprinter.webp, img/content/instaprinter@2x.webp 2x"
+                    srcSet="/img/content/instaprinter.webp, /img/content/instaprinter@2x.webp 2x"
                   />
                   <img
-                    src="img/content/instaprinter.jpg"
-                    srcSet="img/content/instaprinter@2x.jpg 2x"
+                    src="/img/content/instaprinter.jpg"
+                    srcSet="/img/content/instaprinter@2x.jpg 2x"
                     width={280}
                     height={240}
                     alt="Фотоаппарат Instaprinter P2"
