@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Camera } from '../../types/camera';
 //import { useAppSelector } from '../../hooks';
 //import getBasketCameras
+import Rating from '../rating/rating';
 import { useAppDispatch } from '../../hooks';
 import { selectProduct } from '../../store/cameras-data/cameras-data';
 import { AppRoute } from '../../const';
@@ -37,28 +38,11 @@ function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
         </picture>
       </div>
       <div className="product-card__info">
-        <div className="rate product-card__rate">
-          <svg width={17} height={16} aria-hidden="true">
-            <use xlinkHref="#icon-full-star" />
-          </svg>
-          <svg width={17} height={16} aria-hidden="true">
-            <use xlinkHref="#icon-full-star" />
-          </svg>
-          <svg width={17} height={16} aria-hidden="true">
-            <use xlinkHref="#icon-full-star" />
-          </svg>
-          <svg width={17} height={16} aria-hidden="true">
-            <use xlinkHref="#icon-star" />
-          </svg>
-          <svg width={17} height={16} aria-hidden="true">
-            <use xlinkHref="#icon-star" />
-          </svg>
-          <p className="visually-hidden">Рейтинг: {camera.rating}</p>
-          <p className="rate__count">
-            <span className="visually-hidden">Всего оценок:</span>
-            {camera.reviewCount}
-          </p>
-        </div>
+        <Rating
+          rating={camera.rating}
+          id={camera.id}
+          reviewCount={camera.reviewCount}
+        />
         <p className="product-card__title">
           {camera.name}
         </p>

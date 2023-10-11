@@ -16,7 +16,7 @@ function CatalogCardList({cameras}: CatalogCardListProps): JSX.Element {
     return <Loader />;
   }
   if(!cameras.length) {
-    return <p style={{textAlign: 'center', fontSize: 24}}>Квесты не найдены</p>;
+    return <p style={{textAlign: 'center', fontSize: 26}}>Камеры не найдены</p>;
   }
 
   return (

@@ -1,23 +1,16 @@
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import { fetchCameraAction } from '../../store/api-actions';
 
+import { useAppSelector } from '../../hooks';
 import { getSelectedProductStatus } from '../../store/cameras-data/selectors';
-//import { getSelectedProduct } from '../../store/product-data/selectors';
-import { getSelectedProduct } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
+import { Camera } from '../../types/camera';
 import { Status } from '../../const';
+import Rating from '../rating/rating';
 
-function ProductItem(): JSX.Element {
-  const selectedProduct = useAppSelector(getSelectedProduct);
-  const dispatch = useAppDispatch();
+type ProductItemProps = {
+  selectedProduct: Camera;
+}
 
-  const cameraId = Number(useParams().id);
-
-  useEffect(() => {
-    dispatch(fetchCameraAction(cameraId));
-  },[cameraId, dispatch]);
+function ProductItem({selectedProduct}: ProductItemProps): JSX.Element {
 
   const loadingStatus = useAppSelector(getSelectedProductStatus);
 
@@ -49,27 +42,11 @@ function ProductItem(): JSX.Element {
         </div>
         <div className="product__content">
           <h1 className="title title--h3">{selectedProduct?.name}</h1>
-          <div className="rate product__rate">
-            <svg width={17} height={16} aria-hidden="true">
-              <use xlinkHref="#icon-full-star" />
-            </svg>
-            <svg width={17} height={16} aria-hidden="true">
-              <use xlinkHref="#icon-full-star" />
-            </svg>
-            <svg width={17} height={16} aria-hidden="true">
-              <use xlinkHref="#icon-full-star" />
-            </svg>
-            <svg width={17} height={16} aria-hidden="true">
-              <use xlinkHref="#icon-full-star" />
-            </svg>
-            <svg width={17} height={16} aria-hidden="true">
-              <use xlinkHref="#icon-star" />
-            </svg>
-            <p className="visually-hidden">Рейтинг: 4</p>
-            <p className="rate__count">
-              <span className="visually-hidden">Всего оценок:</span>12
-            </p>
-          </div>
+          <Rating
+            rating={selectedProduct?.rating}
+            id={selectedProduct?.id}
+            reviewCount={selectedProduct?.reviewCount}
+          />
           <p className="product__price">
             <span className="visually-hidden">Цена:</span>{selectedProduct?.price} ₽
           </p>
