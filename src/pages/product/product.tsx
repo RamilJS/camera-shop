@@ -54,7 +54,7 @@ function Product(): JSX.Element {
                   </li>
                   <li className="breadcrumbs__item">
                     <span className="breadcrumbs__link breadcrumbs__link--active">
-                      Ретрокамера Das Auge IV
+                      {camera?.name}
                     </span>
                   </li>
                 </ul>
