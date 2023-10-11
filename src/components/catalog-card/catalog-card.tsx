@@ -3,7 +3,7 @@ import { Camera } from '../../types/camera';
 import { setCameraInBasketModal } from '../../store/cameras-data/cameras-data';
 import Rating from '../rating/rating';
 import { useAppDispatch } from '../../hooks';
-
+import { formatPrice } from '../../utils';
 import { AppRoute } from '../../const';
 
 type CatalogCardProps = {
@@ -48,7 +48,7 @@ function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
           {camera.name}
         </p>
         <p className="product-card__price">
-          <span className="visually-hidden">Цена:</span>{camera.price} ₽
+          <span className="visually-hidden">Цена:</span>{formatPrice(camera.price)}
         </p>
       </div>
       <div className="product-card__buttons">

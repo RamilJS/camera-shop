@@ -1,4 +1,6 @@
+
 import { Camera } from '../../../types/camera';
+import { formatPrice } from '../../../utils';
 
 type CatalogAddItemProps = {
   camera: Camera;
@@ -41,7 +43,7 @@ function CatalogAddItem({camera, handleAddToBasketClick, handleModalClose}: Cata
                 <li className="basket-item__list-item">{camera.level} уровень</li>
               </ul>
               <p className="basket-item__price">
-                <span className="visually-hidden">Цена:</span>{camera.price} ₽
+                <span className="visually-hidden">Цена:</span>{formatPrice(camera.price)}
               </p>
             </div>
           </div>

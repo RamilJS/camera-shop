@@ -2,8 +2,9 @@
 import { useAppSelector } from '../../hooks';
 import { getCameraProductStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
-import { Camera } from '../../types/camera';
 import Rating from '../rating/rating';
+import { Camera } from '../../types/camera';
+import { formatPrice } from '../../utils';
 
 type ProductItemProps = {
   camera: Camera;
@@ -42,7 +43,7 @@ function ProductItem({camera}: ProductItemProps): JSX.Element {
             reviewCount={camera.reviewCount}
           />
           <p className="product__price">
-            <span className="visually-hidden">Цена:</span>{camera.price} ₽
+            <span className="visually-hidden">Цена:</span>{formatPrice(camera.price)}
           </p>
           <button className="btn btn--purple" type="button">
             <svg width={24} height={16} aria-hidden="true">
