@@ -1,25 +1,19 @@
 
 import { useAppSelector } from '../../hooks';
-import { getSelectedProductStatus } from '../../store/cameras-data/selectors';
+import { getCameraProductStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
 import { Camera } from '../../types/camera';
-import { Status } from '../../const';
 import Rating from '../rating/rating';
 
 type ProductItemProps = {
-  selectedProduct: Camera;
+  camera: Camera;
 }
 
-function ProductItem({selectedProduct}: ProductItemProps): JSX.Element {
+function ProductItem({camera}: ProductItemProps): JSX.Element {
+  const isCameraLoading = useAppSelector(getCameraProductStatus);
 
-  const loadingStatus = useAppSelector(getSelectedProductStatus);
-
-  if (loadingStatus === Status.Pending) {
+  if (isCameraLoading || !camera) {
     return <Loader />;
-  }
-
-  if (loadingStatus === Status.Error) {
-    return <p>Error loading product</p>;
   }
 
   return (
@@ -29,26 +23,26 @@ function ProductItem({selectedProduct}: ProductItemProps): JSX.Element {
           <picture>
             <source
               type="image/webp"
-              srcSet={`${selectedProduct?.previewImgWebp}, ${selectedProduct?.previewImgWebp2x} 2x`}
+              srcSet={`/${camera.previewImgWebp}, /${camera.previewImgWebp2x} 2x`}
             />
             <img
-              src={selectedProduct?.previewImg}
-              srcSet={selectedProduct?.previewImg2x}
+              src={`/${camera.previewImg}`}
+              srcSet={`/${camera.previewImg2x}`}
               width={560}
               height={480}
-              alt={selectedProduct?.name}
+              alt={camera.name}
             />
           </picture>
         </div>
         <div className="product__content">
-          <h1 className="title title--h3">{selectedProduct?.name}</h1>
+          <h1 className="title title--h3">{camera.name}</h1>
           <Rating
-            rating={selectedProduct?.rating}
-            id={selectedProduct?.id}
-            reviewCount={selectedProduct?.reviewCount}
+            rating={camera.rating}
+            id={camera.id}
+            reviewCount={camera.reviewCount}
           />
           <p className="product__price">
-            <span className="visually-hidden">Цена:</span>{selectedProduct?.price} ₽
+            <span className="visually-hidden">Цена:</span>{camera.price} ₽
           </p>
           <button className="btn btn--purple" type="button">
             <svg width={24} height={16} aria-hidden="true">
@@ -70,26 +64,26 @@ function ProductItem({selectedProduct}: ProductItemProps): JSX.Element {
                 <ul className="product__tabs-list">
                   <li className="item-list">
                     <span className="item-list__title">Артикул:</span>
-                    <p className="item-list__text"> {selectedProduct?.vendorCode}</p>
+                    <p className="item-list__text"> {camera.vendorCode}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Категория:</span>
-                    <p className="item-list__text">{selectedProduct?.category}</p>
+                    <p className="item-list__text">{camera.category}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Тип камеры:</span>
-                    <p className="item-list__text">{selectedProduct?.type}</p>
+                    <p className="item-list__text">{camera.type}</p>
                   </li>
                   <li className="item-list">
                     <span className="item-list__title">Уровень:</span>
-                    <p className="item-list__text">{selectedProduct?.level}</p>
+                    <p className="item-list__text">{camera.level}</p>
                   </li>
                 </ul>
               </div>
               <div className="tabs__element is-active">
                 <div className="product__tabs-text">
                   <p>
-                    {selectedProduct?.description}
+                    {camera.description}
                   </p>
                 </div>
               </div>

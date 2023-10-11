@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
+//import 'swiper/swiper-bundle.min.css';
+//import { Swiper, SwiperSlide } from 'swiper/react';
+//import { Navigation } from 'swiper';
+//import { useAppSelector } from '../../hooks';
 import { AppRoute } from '../../const';
+//import { getSimilarCameras, getSimilarCamerasStatus } from '../../store/cameras-data/selectors';
 
 function SimilarProduct(): JSX.Element {
+  //const similarCameras = useAppSelector(getSimilarCameras);
+  //const isSimilarCamerasLoading = useAppSelector(getSimilarCamerasStatus);
+
   return (
     <section className="product-similar">
       <div className="container">
@@ -68,11 +76,11 @@ function SimilarProduct(): JSX.Element {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="img/content/das-auge.webp, img/content/das-auge@2x.webp 2x"
+                    srcSet="/img/content/das-auge.webp, /img/content/das-auge@2x.webp 2x"
                   />
                   <img
-                    src="img/content/das-auge.jpg"
-                    srcSet="img/content/das-auge@2x.jpg 2x"
+                    src="/img/content/das-auge.jpg"
+                    srcSet="/img/content/das-auge@2x.jpg 2x"
                     width={280}
                     height={240}
                     alt="Ретрокамера «Das Auge IV»"

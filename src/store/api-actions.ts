@@ -22,6 +22,14 @@ export const fetchCameraAction = createAsyncThunk<Camera, number, ThunkOptions>(
   }
 );
 
+export const fetchSimilarCamerasAction = createAsyncThunk<Cameras, number, ThunkOptions>(
+  'data/fetchSimilarCameras',
+  async (cameraId, { extra: api}) => {
+    const {data: cameras} = await api.get<Cameras>(`${APIRoute.Cameras}/${cameraId}/similar`);
+    return cameras;
+  }
+);
+
 export const fetchPromoAction = createAsyncThunk<Promo[], undefined, ThunkOptions>(
   'data/fetchPromo',
   async (_arg, {extra: api}) => {

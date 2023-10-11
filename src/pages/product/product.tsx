@@ -9,17 +9,19 @@ import SimilarProduct from '../../components/similar-product/similar-product';
 import ReviewListBlock from '../../components/review-list-block/review-list-block';
 import ProductItem from '../../components/product-item/product-item';
 import { fetchCameraAction } from '../../store/api-actions';
-import { getSelectedProduct } from '../../store/cameras-data/selectors';
+import { fetchSimilarCamerasAction } from '../../store/api-actions';
+import { getCameraProduct } from '../../store/cameras-data/selectors';
 import { AppRoute } from '../../const';
 
 function Product(): JSX.Element {
-  const selectedProduct = useAppSelector(getSelectedProduct);
+  const camera = useAppSelector(getCameraProduct);
   const dispatch = useAppDispatch();
 
   const cameraId = Number(useParams().id);
 
   useEffect(() => {
     dispatch(fetchCameraAction(cameraId));
+    dispatch(fetchSimilarCamerasAction(cameraId));
   },[cameraId, dispatch]);
 
   return (
@@ -59,7 +61,7 @@ function Product(): JSX.Element {
               </div>
             </div>
             <div className="page-content__section">
-              <ProductItem selectedProduct={selectedProduct} />
+              <ProductItem camera={camera} />
             </div>
             <div className="page-content__section">
               <SimilarProduct />
