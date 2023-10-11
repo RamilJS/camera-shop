@@ -2,12 +2,13 @@ import ReactModal from 'react-modal';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
+import { getCameraProduct } from '../../../store/cameras-data/selectors';
 //import { getCameraInBasketModal } from '../../../store/basket-data/selectors';
-import { getBasketSuccessModalStatus } from '../../../store/basket-data/selectors';
-import { setSuccessModalOpen } from '../../../store/basket-data/basket-data';
+//import { getBasketSuccessModalStatus } from '../../../store/basket-data/selectors';
+//import { setSuccessModalOpen } from '../../../store/basket-data/basket-data';
 //import { setCameraInBasketModal } from '../../../store/basket-data/basket-data';
-import { getSelectedProduct } from '../../../store/cameras-data/selectors';
-import { selectProduct } from '../../../store/cameras-data/cameras-data';
+//import { setCameraInBasketModal } from '../../../store/basket-data/basket-data';
+
 import CatalogAddItem from '../catalog-add-item/catalog-add-item';
 import CatalogAddSucces from '../catalog-add-succes/catalog-add-succes';
 import { AppRoute } from '../../../const';
@@ -15,8 +16,8 @@ import { AppRoute } from '../../../const';
 function CatalogPopup(): JSX.Element {
 
   // const camera = useAppSelector(getCameraInBasketModal);
-  const camera = useAppSelector(getSelectedProduct);
-  const isSuccessModalOpen = useAppSelector(getBasketSuccessModalStatus);
+  const camera = useAppSelector(getCameraProduct);
+  //const isSuccessModalOpen = useAppSelector(getBasketSuccessModalStatus);
 
   const [isModalOpen, setIsModalOpen] = useState(true);
 
@@ -28,13 +29,13 @@ function CatalogPopup(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const onModalClose = () => {
-    dispatch(selectProduct(null));
+    dispatch(setCameraInBasketModal(null));
     dispatch(setSuccessModalOpen(false));
   };
   const handleModalClose = () => onModalClose();
 
   const handleAddToBasketClick = () => {
-
+    //тут должен быть диспатч действия добавления продукта в корзину
     dispatch(setSuccessModalOpen(true));
   };
 
