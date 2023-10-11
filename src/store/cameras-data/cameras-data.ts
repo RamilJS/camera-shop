@@ -18,7 +18,7 @@ export type CameraSlice = {
     isLoading: boolean;
     similarCameras: Camera[];
     isSimilarLoading: boolean;
-    isModalBuy: boolean;
+    successModalOpen: boolean;
   };
   promoCamera: {
     data: Promo[] | null;
@@ -36,7 +36,7 @@ const initialState: CameraSlice = {
     isLoading: false,
     similarCameras: [],
     isSimilarLoading: false,
-    isModalBuy: false,
+    successModalOpen: false,
   },
   promoCamera: {
     data: null,
@@ -48,11 +48,11 @@ export const camerasSlice = createSlice({
   name: NameSpace.CamerasData,
   initialState,
   reducers: {
-    selectCamera: (state, action: PayloadAction<Camera>) => {
+    setCameraInBasketModal: (state, action: PayloadAction<Camera | null>) => {
       state.camera.product = action.payload;
     },
-    modalBuy: (state, action: PayloadAction<boolean>) => {
-      state.camera.isModalBuy = action.payload;
+    setSuccessModalOpen: (state, action: PayloadAction<boolean>) => {
+      state.camera.successModalOpen = action.payload;
     },
   },
   extraReducers(builder) {
@@ -100,4 +100,4 @@ export const camerasSlice = createSlice({
   }
 });
 
-export const {selectCamera, modalBuy} = camerasSlice.actions;
+export const {setCameraInBasketModal, setSuccessModalOpen} = camerasSlice.actions;

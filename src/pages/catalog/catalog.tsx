@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useEffect } from 'react';
+import { store } from '../../store';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
 import Header from '../../components/header/header';
@@ -15,8 +16,8 @@ import { getPromo } from '../../store/cameras-data/selectors';
 import { getCameras } from '../../store/cameras-data/selectors';
 import { fetchPromoAction } from '../../store/api-actions';
 import { fetchCamerasAction } from '../../store/api-actions';
-import { store } from '../../store';
 import { AppRoute, ITEMS_PER_PAGE, CATALOG_PAGE_COUNT } from '../../const';
+import CatalogPopup from '../../components/catalog-popups/catalog-popup/catalog-popup';
 
 
 function Catalog(): JSX.Element {
@@ -121,7 +122,7 @@ function Catalog(): JSX.Element {
           </div>
         </main>
         <Footer />
-
+        <CatalogPopup/>
       </div>
     </>
   );

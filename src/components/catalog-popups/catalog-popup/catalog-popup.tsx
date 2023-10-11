@@ -2,12 +2,10 @@ import ReactModal from 'react-modal';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
+
+import { getModalBuyStatus } from '../../../store/cameras-data/selectors';
 import { getCameraProduct } from '../../../store/cameras-data/selectors';
-//import { getCameraInBasketModal } from '../../../store/basket-data/selectors';
-//import { getBasketSuccessModalStatus } from '../../../store/basket-data/selectors';
-//import { setSuccessModalOpen } from '../../../store/basket-data/basket-data';
-//import { setCameraInBasketModal } from '../../../store/basket-data/basket-data';
-//import { setCameraInBasketModal } from '../../../store/basket-data/basket-data';
+import { setCameraInBasketModal, setSuccessModalOpen} from '../../../store/cameras-data/cameras-data';
 
 import CatalogAddItem from '../catalog-add-item/catalog-add-item';
 import CatalogAddSucces from '../catalog-add-succes/catalog-add-succes';
@@ -17,7 +15,7 @@ function CatalogPopup(): JSX.Element {
 
   // const camera = useAppSelector(getCameraInBasketModal);
   const camera = useAppSelector(getCameraProduct);
-  //const isSuccessModalOpen = useAppSelector(getBasketSuccessModalStatus);
+  const isSuccessModalOpen = useAppSelector(getModalBuyStatus);
 
   const [isModalOpen, setIsModalOpen] = useState(true);
 

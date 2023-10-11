@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Camera } from '../../types/camera';
-
+import { setCameraInBasketModal } from '../../store/cameras-data/cameras-data';
 import Rating from '../rating/rating';
 import { useAppDispatch } from '../../hooks';
 

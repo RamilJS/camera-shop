@@ -21,4 +21,4 @@ export const getCameraProductStatus = (state: State): boolean => state[NameSpace
 export const getSimilarCameras = (state: State): Cameras => state[NameSpace.CamerasData].camera.similarCameras;
 export const getSimilarCamerasStatus = (state: State): boolean => state[NameSpace.CamerasData].camera.isSimilarLoading;
 
-export const getModalBuyStatus = (state: State) : boolean => state[NameSpace.CamerasData].camera.isModalBuy;
+export const getModalBuyStatus = (state: State) : boolean => state[NameSpace.CamerasData].camera.successModalOpen;
