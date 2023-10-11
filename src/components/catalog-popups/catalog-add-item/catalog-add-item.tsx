@@ -21,11 +21,11 @@ function CatalogAddItem({camera, handleAddToBasketClick, handleModalClose}: Cata
               <picture>
                 <source
                   type="image/webp"
-                  srcSet={`${camera.previewImgWebp}, ${camera.previewImgWebp2x} 2x`}
+                  srcSet={`/${camera.previewImgWebp}, /${camera.previewImgWebp2x} 2x`}
                 />
                 <img
-                  src={camera.previewImg}
-                  srcSet={camera.previewImg2x}
+                  src={`/${camera.previewImg}`}
+                  srcSet={`/${camera.previewImg2x}`}
                   width={140}
                   height={120}
                   alt={camera.name}
