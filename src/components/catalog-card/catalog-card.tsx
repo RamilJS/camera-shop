@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import { Camera } from '../../types/camera';
 import { setCameraInBasketModal } from '../../store/cameras-data/cameras-data';
 import Rating from '../rating/rating';
@@ -70,7 +70,13 @@ function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
           >
             Купить
           </button>}
-        <Link className="btn btn--transparent" to={`${AppRoute.Cameras}${camera.id}`}>
+        <Link
+          className="btn btn--transparent"
+          to={generatePath(AppRoute.Product, {
+            id: String(camera.id),
+            tab: AppRoute.DescriptionTab
+          })}
+        >
           Подробнее
         </Link>
       </div>

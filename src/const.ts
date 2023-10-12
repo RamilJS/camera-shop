@@ -6,9 +6,12 @@ export const CATALOG_PAGE_COUNT = 3;
 export const enum AppRoute {
   Main = '/',
   Cameras = '/cameras/',
-  Product = '/cameras/:id',
+  //Product = '/cameras/:id/',
+  Product = '/cameras/:id/:tab',
   Basket = '/basket',
   NotFound = '/not-found-screen',
+  DescriptionTab = 'description',
+  SpecificationsTab = 'specifications',
 }
 
 export enum APIRoute {

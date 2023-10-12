@@ -1,16 +1,17 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Link, generatePath } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Link } from 'react-router-dom';
+import'./banner.css';
 import { useAppSelector } from '../../hooks';
 import { getPromoStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
 import { Promo } from '../../types/promo';
 import { AppRoute, Status, TIMEOUT_SWIPER } from '../../const';
-import'./banner.css';
+
 
 type PromoProps = {
   promoCamera: Promo[] | null;
@@ -64,7 +65,10 @@ function Banner({promoCamera}: PromoProps): JSX.Element {
               <span className="banner__text">
           Профессиональная камера от&nbsp;известного производителя
               </span>
-              <Link className="btn" to={`${AppRoute.Cameras}${elem.id}`}>
+              <Link
+                className="btn"
+                to={generatePath(AppRoute.Product, {id: String(elem.id), tab: AppRoute.DescriptionTab})}
+              >
           Подробнее
               </Link>
             </p>
