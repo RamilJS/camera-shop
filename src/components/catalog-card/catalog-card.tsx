@@ -8,21 +8,22 @@ import { AppRoute } from '../../const';
 
 type CatalogCardProps = {
   camera: Camera;
-  isActive: boolean;
+  //isActive: boolean;
+  productClassName: string;
 }
 
-function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
+function CatalogCard({camera, productClassName }: CatalogCardProps): JSX.Element {
   const dispatch = useAppDispatch();
   //const camerasInBasket = useAppSelector(getBasketCameras);
 
-  const productCardClassName = isActive ? 'product-card is-active' : 'product-card';
+  //const productCardClassName = isActive ? 'product-card is-active' : 'product-card';
   //const inBasket = camerasInBasket.find((cameraInBasket) => cameraInBasket.id === camera.id);
   const inBasket = false;
 
   const hadleBuyClick = () => dispatch(setCameraInBasketModal(camera));
 
   return (
-    <div className={productCardClassName}>
+    <div className={productClassName}>
       <div className="product-card__img">
         <picture>
           <source
