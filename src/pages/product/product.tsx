@@ -8,10 +8,13 @@ import Footer from '../../components/footer/footer';
 import SimilarProduct from '../../components/similar-product/similar-product';
 import ReviewListBlock from '../../components/review-list-block/review-list-block';
 import ProductItem from '../../components/product-item/product-item';
+//import CatalogPopup from '../../components/catalog-popups/catalog-popup/catalog-popup';
 import { fetchCameraAction } from '../../store/api-actions';
 import { fetchSimilarCamerasAction } from '../../store/api-actions';
 import { getCameraProduct } from '../../store/cameras-data/selectors';
 import { AppRoute } from '../../const';
+import UpButton from '../../components/up-button/up-button';
+
 
 function Product(): JSX.Element {
   const camera = useAppSelector(getCameraProduct);
@@ -71,12 +74,9 @@ function Product(): JSX.Element {
             </div>
           </div>
         </main>
-        <Link className="up-btn" to="#header">
-          <svg width={12} height={18} aria-hidden="true">
-            <use xlinkHref="#icon-arrow2" />
-          </svg>
-        </Link>
+        <UpButton/>
         <Footer />
+
       </div>
     </>
   );
