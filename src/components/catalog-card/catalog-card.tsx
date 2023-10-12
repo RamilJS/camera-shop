@@ -27,11 +27,11 @@ function CatalogCard({camera, isActive}: CatalogCardProps): JSX.Element {
         <picture>
           <source
             type="image/webp"
-            srcSet={`${camera.previewImgWebp}, ${camera.previewImg2x} 2x`}
+            srcSet={`/${camera.previewImgWebp}, /${camera.previewImg2x} 2x`}
           />
           <img
-            src={camera.previewImg}
-            srcSet={`${camera.previewImg2x} 2x`}
+            src={`/${camera.previewImg}`}
+            srcSet={`/${camera.previewImg2x} 2x`}
             width={280}
             height={240}
             alt={camera.name}
