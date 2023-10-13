@@ -1,7 +1,7 @@
 import CatalogCard from '../catalog-card/catalog-card';
 import { Camera } from '../../types/camera';
 import { useAppSelector } from '../../hooks';
-import { getStatus } from '../../store/cameras-data/selectors';
+import { getCamerasStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
 import { Status } from '../../const';
 
@@ -10,7 +10,7 @@ type CatalogCardListProps = {
 }
 
 function CatalogCardList({cameras}: CatalogCardListProps): JSX.Element {
-  const isDataLoading = useAppSelector(getStatus);
+  const isDataLoading = useAppSelector(getCamerasStatus);
 
   if (isDataLoading === Status.Pending) {
     return <Loader />;
@@ -26,7 +26,8 @@ function CatalogCardList({cameras}: CatalogCardListProps): JSX.Element {
           <CatalogCard
             key={camera.id}
             camera={camera}
-            isActive={false}
+            productClassName={''}
+            //isActive={false}
           />
         ))
       }

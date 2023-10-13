@@ -1,4 +1,9 @@
+import { getReviews } from '../../store/reviews-data/selectors';
+import { useAppSelector } from '../../hooks';
+
 function ReviewListBlock(): JSX.Element {
+  const reviewsList = useAppSelector(getReviews);
+
   return (
     <section className="review-block">
       <div className="container">
