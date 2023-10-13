@@ -18,7 +18,7 @@ export enum APIRoute {
   Cameras = '/cameras',
   SimilarCameras = 'similar',
   Reviews = 'reviews',
-  ReviewPost = '/reviews',
+  PostReview = '/reviews',
   Promo = '/promo',
   Coupons = '/coupons',
   OrdersPost = '/orders',
@@ -26,8 +26,7 @@ export enum APIRoute {
 
 export enum NameSpace {
   CamerasData = 'CAMERAS_DATA',
-  BasketData = 'BASKET_DATA',
-  ProductData = 'PRODUCT_DATA',
+  ReviewsData = 'REVIEWS_DATA',
 }
 
 export enum Status {

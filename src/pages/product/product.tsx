@@ -11,6 +11,7 @@ import ProductItem from '../../components/product-item/product-item';
 //import CatalogPopup from '../../components/catalog-popups/catalog-popup/catalog-popup';
 import { fetchCameraAction } from '../../store/api-actions';
 import { fetchSimilarCamerasAction } from '../../store/api-actions';
+import { fetchReviewsAction } from '../../store/api-actions';
 import { getCameraProduct } from '../../store/cameras-data/selectors';
 import { AppRoute } from '../../const';
 import UpButton from '../../components/up-button/up-button';
@@ -25,6 +26,7 @@ function Product(): JSX.Element {
   useEffect(() => {
     dispatch(fetchCameraAction(cameraId));
     dispatch(fetchSimilarCamerasAction(cameraId));
+    dispatch(fetchReviewsAction(cameraId));
   },[cameraId, dispatch]);
 
   return (
