@@ -40,11 +40,13 @@ function CatalogCard({camera, productClassName }: CatalogCardProps): JSX.Element
         </picture>
       </div>
       <div className="product-card__info">
-        <Rating
-          rating={camera.rating}
-          id={camera.id}
-          reviewCount={camera.reviewCount}
-        />
+        <div className="rate product-card__rate">
+          <Rating rating={camera.rating} id={camera.id} />
+          <p className="visually-hidden">Рейтинг: {camera.rating}</p>
+          <p className="rate__count">
+            <span className="visually-hidden">Всего оценок:</span>{camera.reviewCount}
+          </p>
+        </div>
         <p className="product-card__title">
           {camera.name}
         </p>

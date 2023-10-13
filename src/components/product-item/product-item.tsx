@@ -44,11 +44,13 @@ function ProductItem({camera}: ProductItemProps): JSX.Element {
         </div>
         <div className="product__content">
           <h1 className="title title--h3">{camera.name}</h1>
-          <Rating
-            rating={camera.rating}
-            id={camera.id}
-            reviewCount={camera.reviewCount}
-          />
+          <div className="rate product__rate">
+            <Rating rating={camera.rating} id={camera.id} />
+            <p className="visually-hidden">Рейтинг: {camera.rating}</p>
+            <p className="rate__count">
+              <span className="visually-hidden">Всего оценок:</span>{camera.reviewCount}
+            </p>
+          </div>
           <p className="product__price">
             <span className="visually-hidden">Цена:</span>{formatPrice(camera.price)}
           </p>
