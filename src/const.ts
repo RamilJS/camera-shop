@@ -3,6 +3,9 @@ export const TIMEOUT_SWIPER = 3000;
 export const ITEMS_PER_PAGE = 9;
 export const CATALOG_PAGE_COUNT = 3;
 
+export const DEFAULT_REVIEWS_COUNT = 3;
+export const REVIEWS_TO_RENDER_COUNT = 3;
+
 export const enum AppRoute {
   Main = '/',
   Cameras = '/cameras/',
