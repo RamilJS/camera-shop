@@ -45,6 +45,10 @@ function ReviewListBlock(): JSX.Element {
 
   }, [hasScrolledToBottom, renderedReviewsCount, reviewsList]);
 
+  const handleShowMoreReviewsClick = () => {
+    setRenderedReviewsCount(renderedReviewsCount + REVIEWS_TO_RENDER_COUNT);
+  };
+
   return (
     <section className="review-block">
       <div className="container">
@@ -63,7 +67,7 @@ function ReviewListBlock(): JSX.Element {
           {
             isAllReviewsRendered(renderedReviewsCount, reviewsList) ? null :
               <button
-                onClick={() => setRenderedReviewsCount(renderedReviewsCount + REVIEWS_TO_RENDER_COUNT)}
+                onClick={handleShowMoreReviewsClick}
                 className="btn btn--purple"
                 type="button"
               >
