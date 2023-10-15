@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Camera } from '../types/camera';
-import { Reviews } from '../types/reviews';
+import { Reviews, Review, PostReview } from '../types/reviews';
 import { ThunkOptions } from '../types/state';
 import { APIRoute } from '../const';
 import { Promo } from '../types/promo';
@@ -40,10 +40,17 @@ export const fetchPromoAction = createAsyncThunk<Promo[], undefined, ThunkOption
 );
 
 export const fetchReviewsAction = createAsyncThunk<Reviews, number, ThunkOptions>(
-  'data/fetchReviewsAction',
+  'data/fetchReviews',
   async (cameraId, {extra: api}) => {
     const {data} = await api.get<Reviews>(`${APIRoute.Cameras}/${cameraId}/${APIRoute.Reviews}`);
     return data;
   }
 );
 
+export const fetchPostReviewsAction = createAsyncThunk<Review, PostReview, ThunkOptions>(
+  'data/fetchPostReviews',
+  async (reviewData, {extra: api}) => {
+    const {data} = await api.post<Review>(APIRoute.PostReview, (reviewData));
+    return data;
+  }
+);
