@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getReviews } from '../../store/reviews-data/selectors';
 import { useAppSelector } from '../../hooks';
-//import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
+import { setAddReviewModalOpen } from '../../store/reviews-data/reviews-data';
 import ReviewCard from '../review-card/review-card';
 import { Reviews } from '../../types/reviews';
 import { DEFAULT_REVIEWS_COUNT, REVIEWS_TO_RENDER_COUNT } from '../../const';
@@ -10,7 +11,7 @@ const isEndOfPage = () => window.innerHeight + document.documentElement.scrollTo
 const isAllReviewsRendered = (renderedReviewsCount: number, reviews: Reviews) => renderedReviewsCount >= reviews.length;
 
 function ReviewListBlock(): JSX.Element {
-  //const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const [renderedReviewsCount, setRenderedReviewsCount] = useState(DEFAULT_REVIEWS_COUNT);
   const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
   const reviewsList = useAppSelector(getReviews);
@@ -49,12 +50,20 @@ function ReviewListBlock(): JSX.Element {
     setRenderedReviewsCount(renderedReviewsCount + REVIEWS_TO_RENDER_COUNT);
   };
 
+  const handleAddReviewClick = () => {
+    dispatch(setAddReviewModalOpen(true));
+  };
+
   return (
     <section className="review-block">
       <div className="container">
         <div className="page-content__headed">
           <h2 className="title title--h3">Отзывы</h2>
-          <button className="btn" type="button">
+          <button
+            onClick={handleAddReviewClick}
+            className="btn"
+            type="button"
+          >
             Оставить свой отзыв
           </button>
         </div>

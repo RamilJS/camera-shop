@@ -1,6 +1,5 @@
 
-
-function ProductReview(): JSX.Element {
+function ProductAddReview(): JSX.Element {
   return (
     <div className="modal is-active">
       <div className="modal__wrapper">
@@ -174,4 +173,4 @@ function ProductReview(): JSX.Element {
   );
 }
 
-export default ProductReview;
+export default ProductAddReview;

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice,PayloadAction } from '@reduxjs/toolkit';
 //import { toast } from 'react-toastify';
 import { Reviews } from '../../types/reviews';
 import { fetchReviewsAction } from '../api-actions';
@@ -10,18 +10,24 @@ export type ReviewsSlice = {
   reviews: Reviews;
   status: Status;
   postStatus: Status;
+  addReviewModalOpen: boolean;
 }
 
 const initialState: ReviewsSlice = {
   reviews: [],
   status: Status.Unsent,
   postStatus: Status.Unsent,
+  addReviewModalOpen: false,
 };
 
 export const reviewsSlice = createSlice({
   name: NameSpace.ReviewsData,
   initialState,
-  reducers: {},
+  reducers: {
+    setAddReviewModalOpen: (state, action: PayloadAction<boolean>) => {
+      state.addReviewModalOpen = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchReviewsAction.pending, (state) => {
@@ -46,3 +52,5 @@ export const reviewsSlice = createSlice({
       });
   }
 });
+
+export const { setAddReviewModalOpen } = reviewsSlice.actions;
