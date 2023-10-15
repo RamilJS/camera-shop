@@ -1,12 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getReviews } from '../../store/reviews-data/selectors';
 import { useAppSelector } from '../../hooks';
+//import { useAppDispatch } from '../../hooks';
 import ReviewCard from '../review-card/review-card';
+import { Reviews } from '../../types/reviews';
 import { DEFAULT_REVIEWS_COUNT, REVIEWS_TO_RENDER_COUNT } from '../../const';
 
+const isEndOfPage = () => window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight;
+const isAllReviewsRendered = (renderedReviewsCount: number, reviews: Reviews) => renderedReviewsCount >= reviews.length;
+
 function ReviewListBlock(): JSX.Element {
+  //const dispatch = useAppDispatch();
   const [renderedReviewsCount, setRenderedReviewsCount] = useState(DEFAULT_REVIEWS_COUNT);
+  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
   const reviewsList = useAppSelector(getReviews);
+
+  const handleScroll = () => {
+    if (isEndOfPage()) {
+      setHasScrolledToBottom(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    if (isAllReviewsRendered(renderedReviewsCount, reviewsList)) {
+      window.removeEventListener('scroll', handleScroll);
+    }
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [renderedReviewsCount, reviewsList]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    if (isMounted && hasScrolledToBottom && !isAllReviewsRendered(renderedReviewsCount, reviewsList)) {
+      setRenderedReviewsCount(renderedReviewsCount + REVIEWS_TO_RENDER_COUNT);
+      setHasScrolledToBottom(false);
+    }
+
+    return () => {
+      isMounted = false;
+    };
+
+  }, [hasScrolledToBottom, renderedReviewsCount, reviewsList]);
 
   return (
     <section className="review-block">
@@ -23,9 +60,16 @@ function ReviewListBlock(): JSX.Element {
           ))}
         </ul>
         <div className="review-block__buttons">
-          <button className="btn btn--purple" type="button">
-            Показать больше отзывов
-          </button>
+          {
+            isAllReviewsRendered(renderedReviewsCount, reviewsList) ? null :
+              <button
+                onClick={() => setRenderedReviewsCount(renderedReviewsCount + REVIEWS_TO_RENDER_COUNT)}
+                className="btn btn--purple"
+                type="button"
+              >
+                Показать больше отзывов
+              </button>
+          }
         </div>
       </div>
     </section>
