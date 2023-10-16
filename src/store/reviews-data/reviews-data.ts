@@ -1,5 +1,5 @@
 import { createSlice,PayloadAction } from '@reduxjs/toolkit';
-//import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Reviews } from '../../types/reviews';
 import { fetchReviewsAction } from '../api-actions';
 import { fetchPostReviewsAction } from '../api-actions';
@@ -9,15 +9,17 @@ import { NameSpace, Status } from '../../const';
 export type ReviewsSlice = {
   reviews: Reviews;
   status: Status;
-  postStatus: Status;
+  postReviewSuccessStatus: boolean;
   addReviewModalOpen: boolean;
+  reviewPostingStatus: Status;
 }
 
 const initialState: ReviewsSlice = {
   reviews: [],
   status: Status.Unsent,
-  postStatus: Status.Unsent,
+  postReviewSuccessStatus: false,
   addReviewModalOpen: false,
+  reviewPostingStatus: Status.Unsent,
 };
 
 export const reviewsSlice = createSlice({
@@ -26,6 +28,9 @@ export const reviewsSlice = createSlice({
   reducers: {
     setAddReviewModalOpen: (state, action: PayloadAction<boolean>) => {
       state.addReviewModalOpen = action.payload;
+    },
+    setPostReviewSuccessStatus: (state, action: PayloadAction<boolean>) => {
+      state.postReviewSuccessStatus = action.payload;
     },
   },
   extraReducers(builder) {
@@ -41,16 +46,18 @@ export const reviewsSlice = createSlice({
         state.status = Status.Error;
       })
       .addCase(fetchPostReviewsAction.pending, (state) => {
-        state.postStatus = Status.Pending;
+        state.reviewPostingStatus = Status.Pending;
       })
-      .addCase(fetchPostReviewsAction.fulfilled, (state, action) => {
-        state.reviews.push(action.payload);
-        state.postStatus = Status.Success;
+      .addCase(fetchPostReviewsAction.fulfilled, (state) => {
+        state.postReviewSuccessStatus = true;
+        state.reviewPostingStatus = Status.Success;
       })
       .addCase(fetchPostReviewsAction.rejected, (state) => {
-        state.postStatus = Status.Error;
+        state.postReviewSuccessStatus = false;
+        state.reviewPostingStatus = Status.Error;
+        toast.warn('Отзыв не отправлен');
       });
   }
 });
 
-export const { setAddReviewModalOpen } = reviewsSlice.actions;
+export const { setAddReviewModalOpen, setPostReviewSuccessStatus } = reviewsSlice.actions;

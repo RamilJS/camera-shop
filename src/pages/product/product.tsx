@@ -9,6 +9,7 @@ import SimilarProduct from '../../components/similar-product/similar-product';
 import ReviewListBlock from '../../components/review-list-block/review-list-block';
 import ProductItem from '../../components/product-item/product-item';
 //import CatalogPopup from '../../components/catalog-popups/catalog-popup/catalog-popup';
+import ProductAddReview from '../../components/product-popups/product-add-review';
 import { fetchCameraAction } from '../../store/api-actions';
 import { fetchSimilarCamerasAction } from '../../store/api-actions';
 import { fetchReviewsAction } from '../../store/api-actions';
@@ -76,7 +77,7 @@ function Product(): JSX.Element {
         </main>
         <UpButton/>
         <Footer />
-
+        <ProductAddReview/>
       </div>
     </>
   );

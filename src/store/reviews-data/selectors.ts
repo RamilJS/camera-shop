@@ -7,5 +7,7 @@ export const getReviews = (state: State): Reviews => state[NameSpace.ReviewsData
 export const getReviewsStatus = (state: State): Status => state[NameSpace.ReviewsData].status;
 
 //статус отправки нового отзыва на сервер
-export const getPostReviewStatus = (state: State): Status => state[NameSpace.ReviewsData].postStatus;
+export const getPostReviewSuccesStatus = (state: State): boolean => state[NameSpace.ReviewsData].postReviewSuccessStatus;
 export const getAddRevieModalOpenStatus = (state: State): boolean => state[NameSpace.ReviewsData].addReviewModalOpen;
+
+export const getRivewPostingStatus = (state: State): Status => state[NameSpace.ReviewsData].reviewPostingStatus;
