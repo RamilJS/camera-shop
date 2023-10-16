@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { useEffect } from 'react';
 import { store } from '../../store';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Banner from '../../components/banner/banner';
@@ -11,14 +10,12 @@ import CatalogFilter from '../../components/catalog-filter/catalog-filter';
 import CatalogSort from '../../components/catalog-sort/catalog-sort';
 import Pagination from '../../components/pagination/pagination';
 import CatalogCardList from '../../components/catalog-card-list/catalog-card-list';
-
 import { getPromo } from '../../store/cameras-data/selectors';
 import { getCameras } from '../../store/cameras-data/selectors';
 import { fetchPromoAction } from '../../store/api-actions';
 import { fetchCamerasAction } from '../../store/api-actions';
 import { AppRoute, ITEMS_PER_PAGE, CATALOG_PAGE_COUNT } from '../../const';
 import CatalogPopup from '../../components/catalog-popups/catalog-popup/catalog-popup';
-
 
 function Catalog(): JSX.Element {
 
