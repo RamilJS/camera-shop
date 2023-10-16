@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { getCameraProduct } from '../../store/cameras-data/selectors';
 import { fetchPostReviewsAction } from '../../store/api-actions';
 import { PostReview } from '../../types/reviews';
 
 function ReviewForm(): JSX.Element {
+  const [rate, setRate] = useState(0);
   const { register, handleSubmit, formState: { errors } } = useForm<PostReview>();
   const cameraId = useAppSelector(getCameraProduct).id;
   const inputErrorClass = 'is-invalid custom-input form-review__item';
@@ -44,32 +46,32 @@ function ReviewForm(): JSX.Element {
             <div className="rate__group">
               <input
                 {...register('rating', {required: true})}
-                className="visually-hidden" id="star-5" name="rating" type="radio" value="5"
+                className="visually-hidden" id="star-5" name="rating" type="radio" value="5" onClick={() => setRate(5)}
               />
               <label className="rate__label" htmlFor="star-5" title="Отлично"></label>
               <input
                 {...register('rating', {required: true})}
-                className="visually-hidden" id="star-4" name="rating" type="radio" value="4"
+                className="visually-hidden" id="star-4" name="rating" type="radio" value="4" onClick={() => setRate(4)}
               />
               <label className="rate__label" htmlFor="star-4" title="Хорошо"></label>
               <input
                 {...register('rating', {required: true})}
-                className="visually-hidden" id="star-3" name="rating" type="radio" value="3"
+                className="visually-hidden" id="star-3" name="rating" type="radio" value="3" onClick={() => setRate(3)}
               />
               <label className="rate__label" htmlFor="star-3" title="Нормально"></label>
               <input
                 {...register('rating', {required: true})}
-                className="visually-hidden" id="star-2" name="rating" type="radio" value="2"
+                className="visually-hidden" id="star-2" name="rating" type="radio" value="2" onClick={() => setRate(2)}
               />
               <label className="rate__label" htmlFor="star-2" title="Плохо"></label>
               <input
                 {...register('rating', {required: true})}
-                className="visually-hidden" id="star-1" name="rating" type="radio" value="1"
+                className="visually-hidden" id="star-1" name="rating" type="radio" value="1" onClick={() => setRate(1)}
               />
               <label className="rate__label" htmlFor="star-1" title="Ужасно"></label>
             </div>
             <div className="rate__progress">
-              <span className="rate__stars">0</span>
+              <span className="rate__stars">{rate}</span>
               <span>/</span>
               <span className="rate__all-stars">5</span>
             </div>
