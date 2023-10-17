@@ -20,7 +20,7 @@ function CatalogCard({camera, productClassName }: CatalogCardProps): JSX.Element
   //const inBasket = camerasInBasket.find((cameraInBasket) => cameraInBasket.id === camera.id);
   const inBasket = false;
 
-  const hadleBuyClick = () => dispatch(setCameraInBasketModal(camera));
+  const handleBuyClick = () => dispatch(setCameraInBasketModal(camera));
 
   return (
     <div className={productClassName}>
@@ -69,7 +69,7 @@ function CatalogCard({camera, productClassName }: CatalogCardProps): JSX.Element
           <button
             className="btn btn--purple product-card__btn"
             type="button"
-            onClick={hadleBuyClick}
+            onClick={handleBuyClick}
           >
             Купить
           </button>}

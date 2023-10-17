@@ -24,6 +24,9 @@ export type CameraSlice = {
     data: Promo[] | null;
     status: Status;
   };
+  modalCameras: {
+    cameraInBasketModal: Camera | null;
+  };
 };
 
 const initialState: CameraSlice = {
@@ -41,7 +44,10 @@ const initialState: CameraSlice = {
   promoCamera: {
     data: null,
     status: Status.Unsent,
-  }
+  },
+  modalCameras: {
+    cameraInBasketModal: null,
+  },
 };
 
 export const camerasSlice = createSlice({
@@ -49,7 +55,7 @@ export const camerasSlice = createSlice({
   initialState,
   reducers: {
     setCameraInBasketModal: (state, action: PayloadAction<Camera | null>) => {
-      state.camera.product = action.payload;
+      state.modalCameras.cameraInBasketModal = action.payload;
     },
     setSuccessModalOpen: (state, action: PayloadAction<boolean>) => {
       state.camera.successModalOpen = action.payload;

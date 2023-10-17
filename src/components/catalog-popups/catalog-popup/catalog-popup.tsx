@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
 
 import { getModalBuyStatus } from '../../../store/cameras-data/selectors';
-import { getCameraProduct } from '../../../store/cameras-data/selectors';
+import { getCameraInBasketModal } from '../../../store/cameras-data/selectors';
 import { setCameraInBasketModal, setSuccessModalOpen} from '../../../store/cameras-data/cameras-data';
 
 import CatalogAddItem from '../catalog-add-item/catalog-add-item';
@@ -12,9 +12,7 @@ import CatalogAddSucces from '../catalog-add-succes/catalog-add-succes';
 import { AppRoute } from '../../../const';
 
 function CatalogPopup(): JSX.Element {
-
-  // const camera = useAppSelector(getCameraInBasketModal);
-  const camera = useAppSelector(getCameraProduct);
+  const camera = useAppSelector(getCameraInBasketModal);
   const isSuccessModalOpen = useAppSelector(getModalBuyStatus);
 
   const [isModalOpen, setIsModalOpen] = useState(true);

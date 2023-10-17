@@ -2,7 +2,8 @@
 import { useAppSelector } from '../../hooks';
 import Loader from '../loader/loader';
 import Rating from '../rating/rating';
-//import { setCameraInBasketModal } from '../../store/cameras-data/cameras-data';
+import { useAppDispatch } from '../../hooks';
+import { setCameraInBasketModal } from '../../store/cameras-data/cameras-data';
 import { getCameraProductStatus } from '../../store/cameras-data/selectors';
 import { Camera } from '../../types/camera';
 import { formatPrice } from '../../utils';
@@ -13,16 +14,15 @@ type ProductItemProps = {
 }
 
 function ProductItem({camera}: ProductItemProps): JSX.Element {
+  const dispatch = useAppDispatch();
   const isCameraLoading = useAppSelector(getCameraProductStatus);
 
   if (isCameraLoading || !camera) {
     return <Loader />;
   }
 
-  /*
-  const handleBuyClick = () => {
-    setCameraInBasketModal(camera);
-  };*/
+
+  const handleBuyClick = () => dispatch(setCameraInBasketModal(camera));
 
   return (
     <section className="product">
@@ -55,7 +55,7 @@ function ProductItem({camera}: ProductItemProps): JSX.Element {
             <span className="visually-hidden">Цена:</span>{formatPrice(camera.price)}
           </p>
           <button
-            //onClick={handleBuyClick}
+            onClick={handleBuyClick}
             className="btn btn--purple"
             type="button"
           >
