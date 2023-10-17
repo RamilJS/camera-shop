@@ -1,4 +1,3 @@
-
 function CatalogSort(): JSX.Element {
   return (
     <div className="catalog-sort">

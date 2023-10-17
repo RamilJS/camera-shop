@@ -1,5 +1,3 @@
-
-
 function CatalogFilter(): JSX.Element {
   return (
     <div className="catalog-filter">

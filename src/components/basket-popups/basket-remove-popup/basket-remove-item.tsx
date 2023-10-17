@@ -1,5 +1,3 @@
-
-
 function BasketRemoveItem(): JSX.Element {
   return (
     <div className="modal is-active">

@@ -1,4 +1,3 @@
-
 function BasketItem(): JSX.Element {
   return (
     <li className="basket-item">

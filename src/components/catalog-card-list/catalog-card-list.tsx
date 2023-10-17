@@ -27,7 +27,6 @@ function CatalogCardList({cameras}: CatalogCardListProps): JSX.Element {
             key={camera.id}
             camera={camera}
             productClassName={''}
-            //isActive={false}
           />
         ))
       }

@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Link, generatePath } from 'react-router-dom';
@@ -11,7 +10,6 @@ import { getPromoStatus } from '../../store/cameras-data/selectors';
 import Loader from '../loader/loader';
 import { Promo } from '../../types/promo';
 import { AppRoute, Status, TIMEOUT_SWIPER } from '../../const';
-
 
 type PromoProps = {
   promoCamera: Promo[] | null;

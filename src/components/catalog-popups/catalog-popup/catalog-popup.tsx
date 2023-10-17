@@ -2,11 +2,9 @@ import ReactModal from 'react-modal';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
-
 import { getModalBuyStatus } from '../../../store/cameras-data/selectors';
 import { getCameraInBasketModal } from '../../../store/cameras-data/selectors';
 import { setCameraInBasketModal, setSuccessModalOpen} from '../../../store/cameras-data/cameras-data';
-
 import CatalogAddItem from '../catalog-add-item/catalog-add-item';
 import CatalogAddSucces from '../catalog-add-succes/catalog-add-succes';
 import { AppRoute } from '../../../const';
@@ -31,7 +29,6 @@ function CatalogPopup(): JSX.Element {
   const handleModalClose = () => onModalClose();
 
   const handleAddToBasketClick = () => {
-    //тут должен быть диспатч действия добавления продукта в корзину
     dispatch(setSuccessModalOpen(true));
   };
 
@@ -47,7 +44,6 @@ function CatalogPopup(): JSX.Element {
   return (
     <ReactModal
       isOpen={isModalOpen}
-      //isOpen
       ariaHideApp={false}
       style={{content: {inset: 'unset'}}}
       bodyOpenClassName='scroll-lock'

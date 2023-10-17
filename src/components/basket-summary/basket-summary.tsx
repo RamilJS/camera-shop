@@ -1,4 +1,3 @@
-
 function BasketSummary(): JSX.Element {
   return (
     <div className="basket__summary">

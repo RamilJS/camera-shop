@@ -4,7 +4,6 @@ import Product from '../../pages/product/product';
 import Basket from '../../pages/basket/basket';
 import Catalog from '../../pages/catalog/catalog';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
-
 import { AppRoute } from '../../const';
 
 function App(): JSX.Element {
