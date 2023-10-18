@@ -13,10 +13,9 @@ function NotFoundPage(): JSX.Element {
         <Helmet>
           <title>Escape Room: 404</title>
         </Helmet>
-        <h1 className={styles.title}>Error 404
-          <br />
-          <Link to={AppRoute.Main}>Go to main page</Link>
-        </h1>
+        <h1 className={styles.title}>Error 404</h1>
+        <br />
+        <Link to={AppRoute.Main}>Go to main page</Link>
       </div>
       <Footer />
     </>
