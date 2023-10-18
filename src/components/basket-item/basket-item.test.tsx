@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import BasketItem from './basket-item';
 
-describe('Component: Loader', () => {
+describe('Component: BasketItem', () => {
 
   it('should render correctly', () => {
     const articulText = /Артикул:/;
