@@ -29,7 +29,7 @@ export type CameraSlice = {
   };
 };
 
-const initialState: CameraSlice = {
+export const initialState: CameraSlice = {
   cameras: {
     data: [],
     status: Status.Unsent,
