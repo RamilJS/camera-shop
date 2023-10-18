@@ -1,4 +1,4 @@
-import { datatype, random, name, system, date } from 'faker';
+import { datatype, random, name, system, date, image, } from 'faker';
 import { Camera } from '../types/camera';
 import { Promo } from '../types/promo';
 import { Review } from '../types/reviews';
@@ -29,6 +29,19 @@ export const makeFakePromoCamera = (): Promo => ({
   previewImgWebp: system.filePath(),
   previewImgWebp2x: system.filePath(),
 } as Promo);
+
+export const makeFakePromos = () : Promo[] => (
+  new Array(3).fill(null).map(() => (
+    {
+      id: datatype.number(),
+      name: name.firstName(),
+      previewImg: image.imageUrl(),
+      previewImg2x: image.imageUrl(),
+      previewImgWebp: image.imageUrl(),
+      previewImgWebp2x: image.imageUrl(),
+    }
+  ))
+);
 
 export const makeFakeReview = (): Review => ({
   id: datatype.uuid(),
