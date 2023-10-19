@@ -49,6 +49,7 @@ function CatalogPopup(): JSX.Element {
       bodyOpenClassName='scroll-lock'
       overlayClassName='custom-modal-overlay'
       onRequestClose={handleModalClose}
+      data-testId='catalog-react-modal'
     >
       {isSuccessModalOpen
         ?
