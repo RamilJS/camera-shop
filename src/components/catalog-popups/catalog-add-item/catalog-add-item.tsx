@@ -1,4 +1,3 @@
-
 import { Camera } from '../../../types/camera';
 import { formatPrice } from '../../../utils';
 
