@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import BasketSummary from '../../components/basket-summary/basket-summary';
 import BasketList from '../../components/basket-list/basket-list';
+import BasketSummaryOrder from '../../components/basket-summary/basket-summary-order';
+import BasketPromo from '../../components/basket-summary/basket-promo';
 import { AppRoute } from '../../const';
 
 function Basket(): JSX.Element {
@@ -49,7 +50,10 @@ function Basket(): JSX.Element {
               <div className="container">
                 <h1 className="title title--h2">Корзина</h1>
                 <BasketList />
-                <BasketSummary />
+                <div className="basket__summary">
+                  <BasketPromo/>
+                  <BasketSummaryOrder/>
+                </div>
               </div>
             </section>
           </div>
