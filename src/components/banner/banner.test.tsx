@@ -8,9 +8,7 @@ import Banner from './banner';
 import { NameSpace, Status } from '../../const';
 
 const mockStore = configureMockStore([thunk]);
-
 const mockPromoCamera = makeFakePromos();
-
 
 export const fakeStore = {
   [NameSpace.CamerasData]: {
