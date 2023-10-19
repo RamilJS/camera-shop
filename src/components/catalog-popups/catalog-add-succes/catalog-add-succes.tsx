@@ -8,7 +8,7 @@ type CatalogAddSuccesProps = {
 function CatalogAddSucces({handleModalClose, handleLinkToBasketClick}: CatalogAddSuccesProps): JSX.Element {
   return (
     <div className="modal is-active modal--narrow">
-      <div className="modal__wrapper">
+      <div className="modal__wrapper" data-testid='modal-order-success' >
         <div className="modal__overlay" onClick={handleModalClose}/>
         <div className="modal__content">
           <p className="title title--h4">Товар успешно добавлен в корзину</p>

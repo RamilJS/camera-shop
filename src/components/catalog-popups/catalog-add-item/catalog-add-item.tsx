@@ -51,6 +51,7 @@ function CatalogAddItem({camera, handleAddToBasketClick, handleModalClose}: Cata
               onClick={handleAddToBasketClick}
               className="btn btn--purple modal__btn modal__btn--fit-width"
               type="button"
+              data-testid="modal-buy-test"
             >
               <svg width={24} height={16} aria-hidden="true">
                 <use xlinkHref="#icon-add-basket" />
