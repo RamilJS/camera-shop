@@ -46,9 +46,9 @@ function Basket(): JSX.Element {
                 </ul>
               </div>
             </div>
-            <section className="basket">
+            <section className="basket" data-testid="basket-section">
               <div className="container">
-                <h1 className="title title--h2">Корзина</h1>
+                <h1 className="title title--h2" data-testid="basket-title">Корзина</h1>
                 <BasketList />
                 <div className="basket__summary">
                   <BasketPromo/>
