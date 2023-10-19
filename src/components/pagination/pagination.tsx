@@ -11,7 +11,7 @@ type PaginationProps = {
 function Pagination({showPrevButton, showNextButton, currentPage, handlePageChange, pageNumbers}: PaginationProps): JSX.Element {
 
   return (
-    <div className="pagination">
+    <div className="pagination" data-testid="pagination-container">
       <ul className="pagination__list">
         {showPrevButton && (
           <li className="pagination__item">
