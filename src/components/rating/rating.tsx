@@ -17,7 +17,7 @@ function Rating({rating, id}: RatingProps) {
     <>
       {ratings.map((rate) => (
         <svg width="17" height="16" aria-hidden="true" key={`${id}-${rate}`}>
-          <use xlinkHref={rate < rating ? '#icon-full-star' : '#icon-star'}></use>
+          <use data-testid="star" xlinkHref={rate < rating ? '#icon-full-star' : '#icon-star'}></use>
         </svg>
       ))}
     </>
