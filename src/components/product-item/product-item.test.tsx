@@ -76,4 +76,35 @@ describe('Component: ProductItem', () => {
     expect(screen.getByText(fakeCamera.description)).toBeInTheDocument();
     expect(screen.getByText(fakeCamera.reviewCount)).toBeInTheDocument();
   });
+
+  it('should render Loading', () => {
+    const loadingText = 'Loading...';
+
+    const { withStoreComponent } = withStore(<ProductItem camera={fakeCamera}/>, {
+      [NameSpace.CamerasData]: {
+        cameras: {
+          data: fakeCameras,
+          status: Status.Unsent,
+        },
+        camera: {
+          product: fakeCamera,
+          isLoading: true,
+          similarCameras: fakeCameras,
+          isSimilarLoading: false,
+          successModalOpen: false,
+        },
+        promoCamera: {
+          data: mockPromoCamera,
+          status: Status.Unsent,
+        },
+        modalCameras: {
+          cameraInBasketModal: fakeCamera,
+        },
+      }
+    });
+    const preparedComponent = withHistory(withStoreComponent);
+    render(preparedComponent);
+
+    expect(screen.getByText(loadingText)).toBeInTheDocument();
+  });
 });
