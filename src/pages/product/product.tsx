@@ -38,7 +38,7 @@ function Product(): JSX.Element {
       <div className="wrapper">
         <Header/>
         <main>
-          <div className="page-content">
+          <div className="page-content" data-testid="product-test-container">
             <div className="breadcrumbs">
               <div className="container">
                 <ul className="breadcrumbs__list">
