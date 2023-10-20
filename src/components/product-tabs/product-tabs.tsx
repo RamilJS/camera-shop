@@ -1,8 +1,8 @@
 import { useNavigate, useParams, generatePath } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import { getCameraProduct } from '../../store/cameras-data/selectors';
-import DescriptionTab from './description-tab';
-import SpecificationsTab from './specifications-tab';
+import DescriptionTab from './description-tab/description-tab';
+import SpecificationsTab from './specifications-tab/specifications-tab';
 import { AppRoute } from '../../const';
 
 function ProductTabs(): JSX.Element {
@@ -26,7 +26,7 @@ function ProductTabs(): JSX.Element {
   };
 
   return (
-    <div className="tabs product__tabs">
+    <div className="tabs product__tabs" data-testid="product-tabs-test">
       <div className="tabs__controls product__tabs-controls">
         <button
           onClick={handleSpecificatiosClick}

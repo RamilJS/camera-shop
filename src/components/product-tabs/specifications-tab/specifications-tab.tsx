@@ -1,4 +1,4 @@
-import { Camera } from '../../types/camera';
+import { Camera } from '../../../types/camera';
 
 type SpecificationsTabProps = {
   camera: Camera;
@@ -9,7 +9,7 @@ function SpecificationsTab({camera, isActive}: SpecificationsTabProps): JSX.Elem
   const tabClassName = isActive ? 'tabs__element is-active' : 'tabs__element';
 
   return (
-    <div className={tabClassName}>
+    <div className={tabClassName} data-testid="specifications-tab">
       <ul className="product__tabs-list">
         <li className="item-list">
           <span className="item-list__title">Артикул:</span>
