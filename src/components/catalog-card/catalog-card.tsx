@@ -18,7 +18,7 @@ function CatalogCard({camera, productClassName }: CatalogCardProps): JSX.Element
   const handleBuyClick = () => dispatch(setCameraInBasketModal(camera));
 
   return (
-    <div className={productClassName}>
+    <div className={productClassName} data-testid="camera-card-test">
       <div className="product-card__img">
         <picture>
           <source
