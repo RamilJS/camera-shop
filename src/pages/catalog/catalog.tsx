@@ -95,7 +95,7 @@ function Catalog(): JSX.Element {
                 </ul>
               </div>
             </div>
-            <section className="catalog">
+            <section className="catalog" data-testid="catalog-test-container">
               <div className="container">
                 <h1 className="title title--h2">Каталог фото- и видеотехники</h1>
                 <div className="page-content__columns">
