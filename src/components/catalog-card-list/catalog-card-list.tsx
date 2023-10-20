@@ -20,7 +20,7 @@ function CatalogCardList({cameras}: CatalogCardListProps): JSX.Element {
   }
 
   return (
-    <div className="cards catalog__cards">
+    <div className="cards catalog__cards" data-testid="camera-cards-test">
       {
         cameras.map((camera) => (
           <CatalogCard
