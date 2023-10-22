@@ -5,7 +5,6 @@ import { fetchReviewsAction } from '../api-actions';
 import { fetchPostReviewsAction } from '../api-actions';
 import { NameSpace, Status } from '../../const';
 
-
 export type ReviewsSlice = {
   reviews: Reviews;
   status: Status;
