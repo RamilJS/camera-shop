@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { fetchCamerasAction } from '../api-actions';
-import { fetchPromoAction } from '../api-actions';
-import { fetchCameraAction } from '../api-actions';
-import { fetchSimilarCamerasAction } from '../api-actions';
+import {
+  fetchCamerasAction,
+  fetchPromoAction,
+  fetchCameraAction,
+  fetchSimilarCamerasAction,
+} from '../api-actions';
 import { NameSpace, Status } from '../../const';
 import { Camera } from '../../types/camera';
 import { Promo } from '../../types/promo';
 
-export type CameraSlice = {
+export type CamerasSlice = {
   cameras: {
     data: Camera[];
     status: Status;
@@ -29,7 +31,7 @@ export type CameraSlice = {
   };
 };
 
-export const initialState: CameraSlice = {
+export const initialState: CamerasSlice = {
   cameras: {
     data: [],
     status: Status.Unsent,
