@@ -2,6 +2,7 @@ import { screen, render } from '@testing-library/react';
 import ReviewListBlock from './review-list-block';
 import { withHistory, withStore } from '../../utils-test/mock-component';
 import { makeFakeCamera, makeFakePromoCamera, makeFakeReview } from '../../utils-test/mocks';
+import { sortReviewsByDate } from '../../utils';
 import { NameSpace, Status } from '../../const';
 
 const fakeCamera = makeFakeCamera();
@@ -11,6 +12,7 @@ const mockReviews = [makeFakeReview(), makeFakeReview(), makeFakeReview(), makeF
 
 
 describe('Component: ReviewListBlock', () => {
+  const sortedReviews = sortReviewsByDate(mockReviews);
 
   it('should render text correctly', () => {
     const showMoreReviewsText = 'Показать больше отзывов';
@@ -90,7 +92,7 @@ describe('Component: ReviewListBlock', () => {
     const preparedComponent = withHistory(withStoreComponent);
     render(preparedComponent);
 
-    mockReviews.slice(0, DEFAULT_RENDERED_REVIEWS_COUNT).forEach((review) => {
+    sortedReviews.slice(0, DEFAULT_RENDERED_REVIEWS_COUNT).forEach((review) => {
       const reviewText = screen.getByText(review.review);
       expect(reviewText).toBeInTheDocument();
     });
