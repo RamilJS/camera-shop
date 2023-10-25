@@ -45,8 +45,14 @@ function Catalog(): JSX.Element {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalCount);
 
-  const showPrevButton = currentPage > 1;
-  const showNextButton = currentPage < pageCount;
+  let showPrevButton = false;
+  const showNextButton = currentPage < pageCount && currentPage < 4;
+
+  if(pageCount > 3) {
+    showPrevButton = currentPage > 2;
+  } else {
+    showPrevButton = false;
+  }
 
   const pageNumbers = [];
   let startPage = Math.max(1, currentPage - 1);
