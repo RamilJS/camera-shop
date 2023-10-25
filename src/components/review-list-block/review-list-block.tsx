@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../hooks';
 import { setAddReviewModalOpen } from '../../store/reviews-data/reviews-data';
 import ReviewCard from '../review-card/review-card';
 import { Reviews } from '../../types/reviews';
+import { sortReviewsByDate } from '../../utils';
 import { DEFAULT_REVIEWS_COUNT, REVIEWS_TO_RENDER_COUNT } from '../../const';
 
 const isEndOfPage = () => window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight;
@@ -14,7 +15,7 @@ function ReviewListBlock(): JSX.Element {
   const dispatch = useAppDispatch();
   const [renderedReviewsCount, setRenderedReviewsCount] = useState(DEFAULT_REVIEWS_COUNT);
   const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
-  const reviewsList = useAppSelector(getReviews);
+  const reviewsList = sortReviewsByDate(useAppSelector(getReviews));
 
   const handleScroll = () => {
     if (isEndOfPage()) {

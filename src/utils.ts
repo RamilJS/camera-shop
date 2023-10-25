@@ -1,3 +1,5 @@
+import { Reviews } from './types/reviews';
+
 const PriceFormatOptions = {
   style: 'currency',
   currency: 'RUB',
@@ -12,3 +14,5 @@ const DateFormatOptions = {
 } as const;
 
 export const formatDate = (date: string) => new Date(date).toLocaleString('ru-RU', DateFormatOptions);
+
+export const sortReviewsByDate = (reviews: Reviews) => [...reviews].sort((a, b) => Date.parse(b.createAt) - Date.parse(a.createAt));
