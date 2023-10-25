@@ -25,6 +25,8 @@ function Product(): JSX.Element {
   const cameraId = Number(useParams().id);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     dispatch(fetchCameraAction(cameraId));
     dispatch(fetchSimilarCamerasAction(cameraId));
     dispatch(fetchReviewsAction(cameraId));
