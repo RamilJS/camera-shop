@@ -22,8 +22,9 @@
   }
 
   &:disabled {
-    opacity: 0.6;
-    background-color: #f4f4fc;
+    color: #dddddd;
+    background-color: #f8f8f8;
+    pointer-events: none;
     cursor: unset;
   }
 }
@@ -53,8 +54,9 @@
   }
 
   &:disabled {
-    opacity: 0.6;
+    color: #dddddd;
+    background-color: #f8f8f8;
+    pointer-events: none;
     cursor: unset;
-    background-color: #f4f4fc;
   }
 }
