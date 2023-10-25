@@ -21,7 +21,6 @@ function ProductItem({camera}: ProductItemProps): JSX.Element {
     return <Loader />;
   }
 
-
   const handleBuyClick = () => dispatch(setCameraInBasketModal(camera));
 
   return (

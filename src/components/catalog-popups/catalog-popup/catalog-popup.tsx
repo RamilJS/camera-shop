@@ -38,7 +38,7 @@ function CatalogPopup(): JSX.Element {
   };
 
   if (!camera) {
-    return <div>{'We dont have product at this moment'}</div>;
+    return <div></div>;
   }
 
   return (
