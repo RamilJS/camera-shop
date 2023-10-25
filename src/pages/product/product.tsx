@@ -69,7 +69,9 @@ function Product(): JSX.Element {
             <div className="page-content__section">
               <ProductItem camera={camera} />
             </div>
-            <SimilarProduct />
+            <div className="page-content__section">
+              <SimilarProduct/>
+            </div>
             <div className="page-content__section">
               <ReviewListBlock />
             </div>
