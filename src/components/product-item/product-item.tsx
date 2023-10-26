@@ -1,7 +1,4 @@
-//import { useParams, useNavigate, generatePath } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-//import { useEffect } from 'react';
-
 import Loader from '../loader/loader';
 import Rating from '../rating/rating';
 import { useAppDispatch } from '../../hooks';
@@ -10,7 +7,6 @@ import { getCameraProductStatus } from '../../store/cameras-data/selectors';
 import { Camera } from '../../types/camera';
 import { formatPrice } from '../../utils';
 import ProductTabs from '../product-tabs/product-tabs';
-//import { AppRoute } from '../../const';
 
 type ProductItemProps = {
   camera: Camera;
@@ -19,17 +15,6 @@ type ProductItemProps = {
 function ProductItem({camera}: ProductItemProps): JSX.Element {
   const dispatch = useAppDispatch();
   const isCameraLoading = useAppSelector(getCameraProductStatus);
-
-  //const cameraId = Number(useParams().id);
-  //const activeTab = useParams().tab;
-
-  //const navigate = useNavigate();
-
-  /*useEffect(() => {
-    if (activeTab !== AppRoute.SpecificationsTab && activeTab !== AppRoute.DescriptionTab) {
-      navigate(generatePath(AppRoute.Product, {id: String(cameraId), tab: AppRoute.DescriptionTab}));
-    }
-  }, [activeTab, cameraId, navigate]);*/
 
   if (isCameraLoading || !camera) {
     return <Loader />;
