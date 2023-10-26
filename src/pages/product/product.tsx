@@ -16,6 +16,7 @@ import { fetchReviewsAction } from '../../store/api-actions';
 import { getCameraProduct } from '../../store/cameras-data/selectors';
 import { AppRoute } from '../../const';
 import UpButton from '../../components/up-button/up-button';
+import { useNavigate, generatePath } from 'react-router-dom';
 
 
 function Product(): JSX.Element {
@@ -24,6 +25,9 @@ function Product(): JSX.Element {
 
   const cameraId = Number(useParams().id);
 
+  const activeTab = useParams().tab;
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -31,6 +35,12 @@ function Product(): JSX.Element {
     dispatch(fetchSimilarCamerasAction(cameraId));
     dispatch(fetchReviewsAction(cameraId));
   },[cameraId, dispatch]);
+
+  useEffect(() => {
+    if (activeTab !== AppRoute.SpecificationsTab && activeTab !== AppRoute.DescriptionTab) {
+      navigate(generatePath(AppRoute.Product, {id: String(cameraId), tab: AppRoute.DescriptionTab}));
+    }
+  }, [activeTab, cameraId, navigate]);
 
   return (
     <>
