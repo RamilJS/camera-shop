@@ -9,7 +9,7 @@ export const REVIEWS_TO_RENDER_COUNT = 3;
 export const enum AppRoute {
   Main = '/',
   Cameras = '/cameras/',
-  Product = '/cameras/:id/:tab',
+  Product = '/product/:id/:tab',
   Basket = '/basket',
   NotFound = '/not-found-screen',
   DescriptionTab = 'description',
