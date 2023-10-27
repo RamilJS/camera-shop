@@ -58,9 +58,12 @@ function Catalog(): JSX.Element {
   let startPage;
   let endPage;
 
-  if (currentPage === 4 || currentPage === 5) {
-    startPage = Math.max(1, pageCount - 1);
-    endPage = Math.min(pageCount, startPage + 1);
+  if (currentPage <= 3) {
+    startPage = 1;
+    endPage = Math.min(pageCount, startPage + CATALOG_PAGE_COUNT - 1);
+  } else if (currentPage === 4) {
+    startPage = currentPage;
+    endPage = Math.min(pageCount, startPage + CATALOG_PAGE_COUNT - 1);
   } else {
     startPage = Math.max(1, currentPage - 1);
     endPage = Math.min(pageCount, startPage + CATALOG_PAGE_COUNT - 1);
