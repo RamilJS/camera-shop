@@ -55,11 +55,15 @@ function Catalog(): JSX.Element {
   }
 
   const pageNumbers = [];
-  let startPage = Math.max(1, currentPage - 1);
-  const endPage = Math.min(pageCount, startPage + CATALOG_PAGE_COUNT - 1);
+  let startPage;
+  let endPage;
 
-  if (endPage - startPage < CATALOG_PAGE_COUNT - 1) {
-    startPage = Math.max(1, endPage - CATALOG_PAGE_COUNT + 1);
+  if (currentPage === 4 || currentPage === 5) {
+    startPage = Math.max(1, pageCount - 1);
+    endPage = Math.min(pageCount, startPage + 1);
+  } else {
+    startPage = Math.max(1, currentPage - 1);
+    endPage = Math.min(pageCount, startPage + CATALOG_PAGE_COUNT - 1);
   }
 
   for (let i = startPage; i <= endPage; i++) {

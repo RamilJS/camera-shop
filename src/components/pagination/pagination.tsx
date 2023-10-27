@@ -8,7 +8,13 @@ type PaginationProps = {
   pageNumbers: number[];
 }
 
-function Pagination({showPrevButton, showNextButton, currentPage, handlePageChange, pageNumbers}: PaginationProps): JSX.Element {
+function Pagination({
+  showPrevButton,
+  showNextButton,
+  currentPage,
+  handlePageChange,
+  pageNumbers,
+}: PaginationProps): JSX.Element {
 
   return (
     <div className="pagination" data-testid="pagination-container">
