@@ -17,7 +17,7 @@ function Pagination({showPrevButton, showNextButton, currentPage, handlePageChan
           <li className="pagination__item">
             <Link
               className="pagination__link"
-              to={`?page=${currentPage - 1}`}
+              to={currentPage > 2 ? `?page=${currentPage - 1}` : '/'}
               onClick={() => {
                 handlePageChange(currentPage - 1);
               }}
@@ -45,7 +45,7 @@ function Pagination({showPrevButton, showNextButton, currentPage, handlePageChan
           <li className="pagination__item">
             <Link
               className="pagination__link pagination__link--text"
-              to={`?page=${currentPage + 1}`}
+              to={currentPage < 4 ? `?page=${currentPage + 1}` : '/'}
               onClick={() => {
                 handlePageChange(currentPage + 1);
               }}

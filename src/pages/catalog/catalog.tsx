@@ -49,7 +49,7 @@ function Catalog(): JSX.Element {
   const showNextButton = currentPage < pageCount && currentPage < 4;
 
   if(pageCount > 3) {
-    showPrevButton = currentPage > 2;
+    showPrevButton = currentPage > 3;
   } else {
     showPrevButton = false;
   }
