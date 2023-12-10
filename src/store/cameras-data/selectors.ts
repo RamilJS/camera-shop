@@ -8,6 +8,8 @@ type Cameras = Camera[];
 //массив всех 40 камер для каталога и их статус
 export const getCameras = (state: State): Cameras => state[NameSpace.CamerasData].cameras.data;
 export const getCamerasStatus = (state: State): Status => state[NameSpace.CamerasData].cameras.status;
+export const getCamerasDataLoadingStatus = (state: State): boolean => state[NameSpace.CamerasData].cameras.isLoading;
+
 
 //массив из 3 камер для банера и статус
 export const getPromo = (state: State): Promo[] | null => state[NameSpace.CamerasData].promoCamera.data;
@@ -24,5 +26,3 @@ export const getSimilarCamerasStatus = (state: State): boolean => state[NameSpac
 //статус для модального окна
 export const getModalBuyStatus = (state: State) : boolean => state[NameSpace.CamerasData].camera.successModalOpen;
 export const getCameraInBasketModal = (state: State): Camera => state[NameSpace.CamerasData].modalCameras.cameraInBasketModal as Camera;
-
-export const getCamerasDataLoadingStatus = (state: State): boolean => state[NameSpace.CamerasData].cameras.isLoading;
