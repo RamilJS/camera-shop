@@ -14,6 +14,7 @@ export type CamerasSlice = {
   cameras: {
     data: Camera[];
     status: Status;
+    isLoading: boolean;
   };
   camera: {
     product: Camera | null;
@@ -35,6 +36,7 @@ export const initialState: CamerasSlice = {
   cameras: {
     data: [],
     status: Status.Unsent,
+    isLoading: false,
   },
   camera: {
     product: null,
@@ -67,13 +69,16 @@ export const camerasSlice = createSlice({
     builder
       .addCase(fetchCamerasAction.pending, (state) => {
         state.cameras.status = Status.Pending;
+        state.cameras.isLoading = true;
       })
       .addCase(fetchCamerasAction.fulfilled, (state, action) => {
         state.cameras.data = action.payload;
         state.cameras.status = Status.Success;
+        state.cameras.isLoading = false;
       })
       .addCase(fetchCamerasAction.rejected, (state) => {
         state.cameras.status = Status.Error;
+        state.cameras.isLoading = false;
       })
       .addCase(fetchPromoAction.pending, (state) => {
         state.promoCamera.status = Status.Pending;

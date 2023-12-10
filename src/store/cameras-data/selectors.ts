@@ -24,3 +24,5 @@ export const getSimilarCamerasStatus = (state: State): boolean => state[NameSpac
 //статус для модального окна
 export const getModalBuyStatus = (state: State) : boolean => state[NameSpace.CamerasData].camera.successModalOpen;
 export const getCameraInBasketModal = (state: State): Camera => state[NameSpace.CamerasData].modalCameras.cameraInBasketModal as Camera;
+
+export const getCamerasDataLoadingStatus = (state: State): boolean => state[NameSpace.CamerasData].cameras.isLoading;
