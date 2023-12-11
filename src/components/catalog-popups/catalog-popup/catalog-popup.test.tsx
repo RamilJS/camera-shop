@@ -17,6 +17,7 @@ describe('Component: CatalogPopup', () => {
         cameras: {
           data: mockCameras,
           status: Status.Unsent,
+          isLoading: false,
         },
         camera: {
           product: mockCamera,

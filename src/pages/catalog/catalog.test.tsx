@@ -19,6 +19,7 @@ describe('Page: Catalog ', () => {
         cameras: {
           data: fakeCameras,
           status: Status.Unsent,
+          isLoading: false,
         },
         camera: {
           product: fakeCamera,

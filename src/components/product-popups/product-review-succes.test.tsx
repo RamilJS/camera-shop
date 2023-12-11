@@ -5,7 +5,6 @@ describe('Component: ProductReviewSucces', () => {
   it('should render correctly', () => {
     const thankYouText = 'Спасибо за отзыв';
     const returnToShoppingText = 'Вернуться к покупкам';
-    //const
 
     render(<ProductReviewSucces handleModalClose={vi.fn()}/>);
 

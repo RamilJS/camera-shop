@@ -19,6 +19,7 @@ describe('Component: SimilarProduct', () => {
         cameras: {
           data: fakeCameras,
           status: Status.Unsent,
+          isLoading: false,
         },
         camera: {
           product: fakeCamera,
