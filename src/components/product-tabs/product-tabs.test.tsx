@@ -50,6 +50,7 @@ describe('Component: ProductTabs', () => {
         cameras: {
           data: fakeCameras,
           status: Status.Unsent,
+          isLoading: false,
         },
         camera: {
           product: fakeCamera,
@@ -82,6 +83,7 @@ describe('Component: ProductTabs', () => {
         cameras: {
           data: fakeCameras,
           status: Status.Unsent,
+          isLoading: false,
         },
         camera: {
           product: fakeCamera,

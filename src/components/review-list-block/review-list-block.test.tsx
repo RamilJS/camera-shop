@@ -65,6 +65,7 @@ describe('Component: ReviewListBlock', () => {
         cameras: {
           data: fakeCameras,
           status: Status.Unsent,
+          isLoading: false,
         },
         camera: {
           product: fakeCamera,
