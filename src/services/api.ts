@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import browserHistory from '../browser-history';
 import { AppRoute } from '../const';
 
-const BACKEND_URL = 'https://camera-shop.accelerator.pages.academy/';
+const BACKEND_URL = 'https://camera-shop.accelerator.htmlacademy.pro';
 const REQUEST_TIMEOUT = 5000;
 
 type DetailMessageType = {
